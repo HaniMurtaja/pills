@@ -87,11 +87,11 @@ class UserHealthController extends Controller
             $table->editColumn('glucose', function ($row) {
                 return $row->glucose ? $row->glucose : '';
             });
-            $table->addColumn('user_user', function ($row) {
-                return $row->user ? $row->user->user : '';
+            $table->addColumn('user_user_id', function ($row) {
+                return $row->user_id ? $row->user->user_id : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'user']);
+            $table->rawColumns(['actions', 'placeholder', 'user_id']);
 
             return $table->make(true);
         }
@@ -103,7 +103,7 @@ class UserHealthController extends Controller
     {
         abort_if(Gate::denies('user_health_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $users = User::pluck('user', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $users = User::pluck('user_id', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.userHealths.create', compact('users'));
     }
@@ -119,9 +119,9 @@ class UserHealthController extends Controller
     {
         abort_if(Gate::denies('user_health_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $users = User::pluck('user', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $users = User::pluck('user_id', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $userHealth->load('user');
+        $userHealth->load('user_id');
 
         return view('admin.userHealths.edit', compact('userHealth', 'users'));
     }
@@ -137,7 +137,7 @@ class UserHealthController extends Controller
     {
         abort_if(Gate::denies('user_health_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $userHealth->load('user', 'careDocsUserDocs', 'carebiesUsers', 'careMedMedicines');
+        $userHealth->load('user_id', 'careDocsUserDocs', 'carebiesUsers', 'careMedMedicines');
 
         return view('admin.userHealths.show', compact('userHealth'));
     }

@@ -115,7 +115,7 @@ class UsersController extends Controller
 
         $roles = Role::pluck('title', 'id');
 
-        $carebies = UserHealth::pluck('careby', 'id');
+        $carebies = UserHealth::pluck('careby_id', 'id');
 
         return view('admin.users.create', compact('carebies', 'roles'));
     }
@@ -142,7 +142,7 @@ class UsersController extends Controller
 
         $roles = Role::pluck('title', 'id');
 
-        $carebies = UserHealth::pluck('careby', 'id');
+        $carebies = UserHealth::pluck('careby_id', 'id');
 
         $user->load('roles', 'carebies');
 

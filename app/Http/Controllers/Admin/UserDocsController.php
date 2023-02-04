@@ -66,8 +66,8 @@ class UserDocsController extends Controller
 
                 return implode(' ', $labels);
             });
-            $table->addColumn('user_doc_user', function ($row) {
-                return $row->user_doc ? $row->user_doc->user : '';
+            $table->addColumn('user_doc_user_id', function ($row) {
+                return $row->user_doc ? $row->user_doc->user_id : '';
             });
 
             $table->rawColumns(['actions', 'placeholder', 'file', 'care_docs', 'user_doc']);
@@ -82,9 +82,9 @@ class UserDocsController extends Controller
     {
         abort_if(Gate::denies('user_doc_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $care_docs = UserHealth::pluck('careby', 'id');
+        $care_docs = UserHealth::pluck('careby_id', 'id');
 
-        $user_docs = User::pluck('user', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $user_docs = User::pluck('user_id', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.userDocs.create', compact('care_docs', 'user_docs'));
     }
@@ -108,9 +108,9 @@ class UserDocsController extends Controller
     {
         abort_if(Gate::denies('user_doc_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $care_docs = UserHealth::pluck('careby', 'id');
+        $care_docs = UserHealth::pluck('careby_id', 'id');
 
-        $user_docs = User::pluck('user', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $user_docs = User::pluck('user_id', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $userDoc->load('care_docs', 'user_doc');
 

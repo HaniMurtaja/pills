@@ -54,8 +54,8 @@ class UserMedicalHistoryController extends Controller
             $table->editColumn('description', function ($row) {
                 return $row->description ? $row->description : '';
             });
-            $table->addColumn('user_history_user', function ($row) {
-                return $row->user_history ? $row->user_history->user : '';
+            $table->addColumn('user_history_user_id', function ($row) {
+                return $row->user_history ? $row->user_history->user_id : '';
             });
 
             $table->editColumn('care_history', function ($row) {
@@ -79,9 +79,9 @@ class UserMedicalHistoryController extends Controller
     {
         abort_if(Gate::denies('user_medical_history_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user_histories = User::pluck('user', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $user_histories = User::pluck('user_id', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $care_histories = UserHealth::pluck('careby', 'id');
+        $care_histories = UserHealth::pluck('careby_id', 'id');
 
         return view('admin.userMedicalHistories.create', compact('care_histories', 'user_histories'));
     }
@@ -98,9 +98,9 @@ class UserMedicalHistoryController extends Controller
     {
         abort_if(Gate::denies('user_medical_history_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user_histories = User::pluck('user', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $user_histories = User::pluck('user_id', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $care_histories = UserHealth::pluck('careby', 'id');
+        $care_histories = UserHealth::pluck('careby_id', 'id');
 
         $userMedicalHistory->load('user_history', 'care_histories');
 

@@ -67,8 +67,8 @@ class RemindersController extends Controller
                 return $row->snooze ? $row->snooze : '';
             });
 
-            $table->addColumn('user_reminder_user', function ($row) {
-                return $row->user_reminder ? $row->user_reminder->user : '';
+            $table->addColumn('user_reminder_user_id', function ($row) {
+                return $row->user_reminder ? $row->user_reminder->user_id : '';
             });
 
             $table->editColumn('care_reminder', function ($row) {
@@ -92,9 +92,9 @@ class RemindersController extends Controller
     {
         abort_if(Gate::denies('reminder_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user_reminders = User::pluck('user', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $user_reminders = User::pluck('user_id', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $care_reminders = UserHealth::pluck('careby', 'id');
+        $care_reminders = UserHealth::pluck('careby_id', 'id');
 
         return view('admin.reminders.create', compact('care_reminders', 'user_reminders'));
     }
@@ -111,9 +111,9 @@ class RemindersController extends Controller
     {
         abort_if(Gate::denies('reminder_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user_reminders = User::pluck('user', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $user_reminders = User::pluck('user_id', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $care_reminders = UserHealth::pluck('careby', 'id');
+        $care_reminders = UserHealth::pluck('careby_id', 'id');
 
         $reminder->load('user_reminder', 'care_reminders');
 

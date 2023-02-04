@@ -83,9 +83,9 @@ class MedicinesController extends Controller
     {
         abort_if(Gate::denies('medicine_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user_meds = User::pluck('user', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $user_meds = User::pluck('user_id', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $care_meds = UserHealth::pluck('careby', 'id');
+        $care_meds = UserHealth::pluck('careby_id', 'id');
 
         return view('admin.medicines.create', compact('care_meds', 'user_meds'));
     }
@@ -102,9 +102,9 @@ class MedicinesController extends Controller
     {
         abort_if(Gate::denies('medicine_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user_meds = User::pluck('user', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $user_meds = User::pluck('user_id', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $care_meds = UserHealth::pluck('careby', 'id');
+        $care_meds = UserHealth::pluck('careby_id', 'id');
 
         $medicine->load('user_med', 'care_meds');
 

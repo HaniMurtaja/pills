@@ -11,14 +11,14 @@
             @method('PUT')
             @csrf
             <div class="form-group">
-                <label class="required" for="user">{{ trans('cruds.user.fields.user') }}</label>
-                <input class="form-control {{ $errors->has('user') ? 'is-invalid' : '' }}" type="number" name="user" id="user" value="{{ old('user', $user->user) }}" step="1" required>
+                <label class="required" for="user">{{ trans('cruds.user.fields.user_id') }}</label>
+                <input class="form-control {{ $errors->has('user') ? 'is-invalid' : '' }}" type="number" name="user_id" id="user_id" value="{{ old('user_id', $user->user_id) }}" step="1" required>
                 @if($errors->has('user'))
                     <div class="invalid-feedback">
                         {{ $errors->first('user') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.user.fields.user_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.user.fields.user_id_helper') }}</span>
             </div>
             <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.user.fields.name') }}</label>
