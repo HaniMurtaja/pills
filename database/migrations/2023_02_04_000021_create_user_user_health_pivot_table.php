@@ -15,4 +15,10 @@ class CreateUserUserHealthPivotTable extends Migration
             $table->foreign('user_health_id', 'user_health_id_fk_7975206')->references('id')->on('user_healths')->onDelete('cascade');
         });
     }
+
+
+    public function down()
+    {
+        Schema::dropIfExists('user_user_health');
+    }
 }

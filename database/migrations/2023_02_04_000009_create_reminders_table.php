@@ -13,12 +13,17 @@ class CreateRemindersTable extends Migration
             $table->integer('doses');
             $table->integer('duration');
             $table->string('times');
-            $table->integer('start_from');
+            $table->string('start_from');
             $table->string('days_of_week');
             $table->string('snooze');
             $table->date('date');
             $table->timestamps();
             $table->softDeletes();
         });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('reminders');
     }
 }

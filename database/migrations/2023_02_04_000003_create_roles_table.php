@@ -15,4 +15,10 @@ class CreateRolesTable extends Migration
             $table->softDeletes();
         });
     }
+
+
+    public function down()
+    {
+        Schema::dropIfExists('roles');
+    }
 }

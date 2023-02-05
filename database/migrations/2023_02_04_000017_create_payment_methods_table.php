@@ -17,4 +17,9 @@ class CreatePaymentMethodsTable extends Migration
             $table->softDeletes();
         });
     }
+
+    public function down()
+    {
+        Schema::dropIfExists('payment_methods');
+    }
 }

@@ -18,4 +18,9 @@ class CreateOrdersTable extends Migration
             $table->softDeletes();
         });
     }
+
+    public function down()
+    {
+        Schema::dropIfExists('orders');
+    }
 }

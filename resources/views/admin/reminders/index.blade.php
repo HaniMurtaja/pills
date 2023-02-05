@@ -119,7 +119,7 @@
 { data: 'days_of_week', name: 'days_of_week' },
 { data: 'snooze', name: 'snooze' },
 { data: 'date', name: 'date' },
-{ data: 'user_reminder_user', name: 'user_reminder.user' },
+{ data: 'user_reminder_user_id', name: 'user_reminder.user_id' },
 { data: 'care_reminder', name: 'care_reminders.careby' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],

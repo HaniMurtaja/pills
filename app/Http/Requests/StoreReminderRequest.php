@@ -25,9 +25,8 @@ class StoreReminderRequest extends FormRequest
             ],
             'duration' => [
                 'required',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
+                'string',
+              
             ],
             'times' => [
                 'string',
@@ -35,9 +34,8 @@ class StoreReminderRequest extends FormRequest
             ],
             'start_from' => [
                 'required',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
+                'string',
+               
             ],
             'days_of_week' => [
                 'string',

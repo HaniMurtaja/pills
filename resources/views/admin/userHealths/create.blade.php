@@ -10,11 +10,11 @@
         <form method="POST" action="{{ route("admin.user-healths.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label class="required" for="careby">{{ trans('cruds.userHealth.fields.careby') }}</label>
-                <input class="form-control {{ $errors->has('careby') ? 'is-invalid' : '' }}" type="number" name="careby" id="careby" value="{{ old('careby', '') }}" step="1" required>
-                @if($errors->has('careby'))
+                <label  for="careby_id">{{ trans('cruds.userHealth.fields.careby_id') }}</label>
+                <input class="form-control {{ $errors->has('careby_id') ? 'is-invalid' : '' }}" type="number" name="careby_id" id="careby_id" value="{{ old('careby_id', '') }}" step="1" >
+                @if($errors->has('careby_id'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('careby') }}
+                        {{ $errors->first('careby_id') }}
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.userHealth.fields.careby_id_helper') }}</span>

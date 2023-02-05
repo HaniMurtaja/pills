@@ -17,4 +17,9 @@ class CreateContentPagesTable extends Migration
             $table->softDeletes();
         });
     }
+
+    public function down()
+    {
+        Schema::dropIfExists('content_pages');
+    }
 }

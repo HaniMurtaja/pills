@@ -28,4 +28,9 @@ class CreateUserHealthsTable extends Migration
             $table->softDeletes();
         });
     }
+
+    public function down()
+    {
+        Schema::dropIfExists('user_healths');
+    }
 }

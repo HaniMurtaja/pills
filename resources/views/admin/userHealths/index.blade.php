@@ -144,7 +144,7 @@
 { data: 'hdl_cholestrol', name: 'hdl_cholestrol' },
 { data: 'triglycerides', name: 'triglycerides' },
 { data: 'glucose', name: 'glucose' },
-{ data: 'user_user', name: 'user.user' },
+{ data: 'user_user_id', name: 'user.user' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

@@ -15,4 +15,9 @@ class CreateOrderUserPivotTable extends Migration
             $table->foreign('user_id', 'user_id_fk_7975227')->references('id')->on('users')->onDelete('cascade');
         });
     }
+
+    public function down()
+    {
+        Schema::dropIfExists('order_user');
+    }
 }

@@ -16,4 +16,10 @@ class CreateContentTagsTable extends Migration
             $table->softDeletes();
         });
     }
+
+    public function down()
+    {
+        Schema::dropIfExists('content_categories');
+    }
+    
 }

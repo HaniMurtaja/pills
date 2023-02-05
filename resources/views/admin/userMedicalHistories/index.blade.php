@@ -35,10 +35,10 @@
                         {{ trans('cruds.userMedicalHistory.fields.description') }}
                     </th>
                     <th>
-                        {{ trans('cruds.userMedicalHistory.fields.user_history') }}
+                        {{ trans('cruds.userMedicalHistory.fields.user_history_id') }}
                     </th>
                     <th>
-                        {{ trans('cruds.userMedicalHistory.fields.care_history') }}
+                        {{ trans('cruds.userMedicalHistory.fields.care_history_id') }}
                     </th>
                     <th>
                         &nbsp;
@@ -99,7 +99,7 @@
 { data: 'id', name: 'id' },
 { data: 'disease_name', name: 'disease_name' },
 { data: 'description', name: 'description' },
-{ data: 'user_history_user', name: 'user_history.user' },
+{ data: 'user_history_user_id', name: 'user_history.user' },
 { data: 'care_history', name: 'care_histories.careby' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],

@@ -15,4 +15,9 @@ class CreateReminderUserHealthPivotTable extends Migration
             $table->foreign('user_health_id', 'user_health_id_fk_7975219')->references('id')->on('user_healths')->onDelete('cascade');
         });
     }
+
+    public function down()
+    {
+        Schema::dropIfExists('reminder_user_health');
+    }
 }

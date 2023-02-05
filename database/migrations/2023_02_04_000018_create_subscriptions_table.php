@@ -17,4 +17,9 @@ class CreateSubscriptionsTable extends Migration
             $table->softDeletes();
         });
     }
+
+    public function down()
+    {
+        Schema::dropIfExists('subscriptions');
+    }
 }

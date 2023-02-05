@@ -104,7 +104,7 @@
 { data: 'description', name: 'description' },
 { data: 'file', name: 'file', sortable: false, searchable: false },
 { data: 'care_docs', name: 'care_docs.careby' },
-{ data: 'user_doc_user', name: 'user_doc.user' },
+{ data: 'user_doc_user_id', name: 'user_doc.user' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

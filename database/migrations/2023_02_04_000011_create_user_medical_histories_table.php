@@ -16,4 +16,11 @@ class CreateUserMedicalHistoriesTable extends Migration
             $table->softDeletes();
         });
     }
+
+
+    public function down()
+    {
+        Schema::dropIfExists('user_medical_histories');
+    }
+    
 }

@@ -22,4 +22,9 @@ class CreateMedicalGuidesTable extends Migration
             $table->softDeletes();
         });
     }
+
+    public function down()
+    {
+        Schema::dropIfExists('medical_guides');
+    }
 }

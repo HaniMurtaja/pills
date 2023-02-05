@@ -16,4 +16,9 @@ class CreateUserUserAlertPivotTable extends Migration
             $table->boolean('read')->default(0);
         });
     }
+
+    public function down()
+    {
+        Schema::dropIfExists('user_user_alert');
+    }
 }
