@@ -18,7 +18,6 @@ class StoreUserRequest extends FormRequest
     {
         return [
             'user' => [
-                'required',
                 'nullable',
                 'integer',
                 'min:-2147483648',
@@ -51,11 +50,10 @@ class StoreUserRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'carebies.*' => [
+            'carebies' => [
                 'integer',
             ],
             'carebies' => [
-                'required',
                 'array',
             ],
         ];

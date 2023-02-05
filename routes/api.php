@@ -4,6 +4,8 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Users
     Route::post('users/media', 'UsersApiController@storeMedia')->name('users.storeMedia');
     Route::apiResource('users', 'UsersApiController');
+    Route::post('register', 'AuthController@register');
+    Route::post('login', 'AuthController@login');
 
     // Reminders
     Route::apiResource('reminders', 'RemindersApiController');
