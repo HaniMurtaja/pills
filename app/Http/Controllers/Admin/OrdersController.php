@@ -78,7 +78,7 @@ class OrdersController extends Controller
     {
         abort_if(Gate::denies('order_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user_orders = User::pluck('user', 'id');
+        $user_orders = User::pluck('user_id', 'id');
 
         return view('admin.orders.create', compact('user_orders'));
     }
@@ -95,7 +95,7 @@ class OrdersController extends Controller
     {
         abort_if(Gate::denies('order_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user_orders = User::pluck('user', 'id');
+        $user_orders = User::pluck('user_id', 'id');
 
         $order->load('user_orders');
 

@@ -25,19 +25,25 @@
                             {{ trans('cruds.reminder.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.reminder.fields.doses') }}
+                            {{ trans('cruds.reminder.fields.applying') }}
                         </th>
                         <th>
-                            {{ trans('cruds.reminder.fields.duration') }}
+                            {{ trans('cruds.reminder.fields.doses') }}
                         </th>
                         <th>
                             {{ trans('cruds.reminder.fields.times') }}
                         </th>
                         <th>
-                            {{ trans('cruds.reminder.fields.start_from') }}
+                            {{ trans('cruds.reminder.fields.duration') }}
                         </th>
                         <th>
                             {{ trans('cruds.reminder.fields.days_of_week') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.reminder.fields.start_from') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.reminder.fields.time') }}
                         </th>
                         <th>
                             {{ trans('cruds.reminder.fields.snooze') }}
@@ -66,19 +72,25 @@
                                 {{ $reminder->id ?? '' }}
                             </td>
                             <td>
-                                {{ $reminder->doses ?? '' }}
+                                {{ $reminder->applying ?? '' }}
                             </td>
                             <td>
-                                {{ $reminder->duration ?? '' }}
+                                {{ $reminder->doses ?? '' }}
                             </td>
                             <td>
                                 {{ $reminder->times ?? '' }}
                             </td>
                             <td>
-                                {{ $reminder->start_from ?? '' }}
+                                {{ $reminder->duration ?? '' }}
                             </td>
                             <td>
                                 {{ $reminder->days_of_week ?? '' }}
+                            </td>
+                            <td>
+                                {{ $reminder->start_from ?? '' }}
+                            </td>
+                            <td>
+                                {{ $reminder->time ?? '' }}
                             </td>
                             <td>
                                 {{ $reminder->snooze ?? '' }}

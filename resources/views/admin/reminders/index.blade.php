@@ -127,7 +127,7 @@
 { data: 'time', name: 'time' },
 { data: 'snooze', name: 'snooze' },
 { data: 'date', name: 'date' },
-{ data: 'user_reminder_user', name: 'user_reminder_user' },
+{ data: 'user_reminder_user', name: 'user_reminder.user' },
 { data: 'care_reminder', name: 'care_reminders.careby' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],

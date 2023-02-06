@@ -25,10 +25,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.user.fields.user_id') }}
+                            {{ trans('cruds.user.fields.user') }}
                         </th>
                         <td>
-                            {{ $user->user_id }}
+                            {{ $user->user }}
                         </td>
                     </tr>
                     <tr>

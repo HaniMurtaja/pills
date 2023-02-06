@@ -323,3 +323,4 @@ return [
     'calendar'                       => 'التقويم',
     'messenger'                      => 'مراسل',
 ];
+
