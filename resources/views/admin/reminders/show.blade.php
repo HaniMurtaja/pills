@@ -25,18 +25,18 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.reminder.fields.doses') }}
+                            {{ trans('cruds.reminder.fields.applying') }}
                         </th>
                         <td>
-                            {{ $reminder->doses }}
+                            {{ $reminder->applying }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.reminder.fields.duration') }}
+                            {{ trans('cruds.reminder.fields.doses') }}
                         </th>
                         <td>
-                            {{ $reminder->duration }}
+                            {{ $reminder->doses }}
                         </td>
                     </tr>
                     <tr>
@@ -49,10 +49,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.reminder.fields.start_from') }}
+                            {{ trans('cruds.reminder.fields.duration') }}
                         </th>
                         <td>
-                            {{ $reminder->start_from }}
+                            {{ $reminder->duration }}
                         </td>
                     </tr>
                     <tr>
@@ -61,6 +61,22 @@
                         </th>
                         <td>
                             {{ $reminder->days_of_week }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.reminder.fields.start_from') }}
+                        </th>
+                        <td>
+                            {{ $reminder->start_from }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.reminder.fields.time') }}
+                        </th>
+                        <td>
+                            {{ $reminder->time }}
                         </td>
                     </tr>
                     <tr>

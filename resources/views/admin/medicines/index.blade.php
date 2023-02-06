@@ -107,7 +107,7 @@
 { data: 'med_scientific_name', name: 'med_scientific_name' },
 { data: 'med_quantity', name: 'med_quantity' },
 { data: 'med_expire_date', name: 'med_expire_date' },
-{ data: 'user_med_user_id', name: 'user_med.user' },
+{ data: 'user_med_user', name: 'user_med_user' },
 { data: 'care_med', name: 'care_meds.careby' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],

@@ -48,27 +48,33 @@ class RemindersController extends Controller
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : '';
             });
+            $table->editColumn('applying', function ($row) {
+                return $row->applying ? $row->applying : '';
+            });
             $table->editColumn('doses', function ($row) {
                 return $row->doses ? $row->doses : '';
-            });
-            $table->editColumn('duration', function ($row) {
-                return $row->duration ? $row->duration : '';
             });
             $table->editColumn('times', function ($row) {
                 return $row->times ? $row->times : '';
             });
-            $table->editColumn('start_from', function ($row) {
-                return $row->start_from ? $row->start_from : '';
+            $table->editColumn('duration', function ($row) {
+                return $row->duration ? $row->duration : '';
             });
             $table->editColumn('days_of_week', function ($row) {
                 return $row->days_of_week ? $row->days_of_week : '';
+            });
+            $table->editColumn('start_from', function ($row) {
+                return $row->start_from ? $row->start_from : '';
+            });
+            $table->editColumn('time', function ($row) {
+                return $row->time ? $row->time : '';
             });
             $table->editColumn('snooze', function ($row) {
                 return $row->snooze ? $row->snooze : '';
             });
 
-            $table->addColumn('user_reminder_user_id', function ($row) {
-                return $row->user_reminder ? $row->user_reminder->user_id : '';
+            $table->addColumn('user_reminder_user', function ($row) {
+                return $row->user_reminder ? $row->user_reminder->user : '';
             });
 
             $table->editColumn('care_reminder', function ($row) {
@@ -153,3 +159,4 @@ class RemindersController extends Controller
         return response(null, Response::HTTP_NO_CONTENT);
     }
 }
+

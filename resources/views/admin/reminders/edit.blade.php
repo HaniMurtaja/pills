@@ -11,6 +11,16 @@
             @method('PUT')
             @csrf
             <div class="form-group">
+                <label class="required" for="applying">{{ trans('cruds.reminder.fields.applying') }}</label>
+                <input class="form-control {{ $errors->has('applying') ? 'is-invalid' : '' }}" type="text" name="applying" id="applying" value="{{ old('applying', $reminder->applying) }}" required>
+                @if($errors->has('applying'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('applying') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.reminder.fields.applying_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="doses">{{ trans('cruds.reminder.fields.doses') }}</label>
                 <input class="form-control {{ $errors->has('doses') ? 'is-invalid' : '' }}" type="number" name="doses" id="doses" value="{{ old('doses', $reminder->doses) }}" step="1" required>
                 @if($errors->has('doses'))
@@ -19,16 +29,6 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.reminder.fields.doses_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="duration">{{ trans('cruds.reminder.fields.duration') }}</label>
-                <input class="form-control {{ $errors->has('duration') ? 'is-invalid' : '' }}" type="number" name="duration" id="duration" value="{{ old('duration', $reminder->duration) }}" step="1" required>
-                @if($errors->has('duration'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('duration') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.reminder.fields.duration_helper') }}</span>
             </div>
             <div class="form-group">
                 <label class="required" for="times">{{ trans('cruds.reminder.fields.times') }}</label>
@@ -41,14 +41,14 @@
                 <span class="help-block">{{ trans('cruds.reminder.fields.times_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="start_from">{{ trans('cruds.reminder.fields.start_from') }}</label>
-                <input class="form-control {{ $errors->has('start_from') ? 'is-invalid' : '' }}" type="number" name="start_from" id="start_from" value="{{ old('start_from', $reminder->start_from) }}" step="1" required>
-                @if($errors->has('start_from'))
+                <label class="required" for="duration">{{ trans('cruds.reminder.fields.duration') }}</label>
+                <input class="form-control {{ $errors->has('duration') ? 'is-invalid' : '' }}" type="text" name="duration" id="duration" value="{{ old('duration', $reminder->duration) }}" required>
+                @if($errors->has('duration'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('start_from') }}
+                        {{ $errors->first('duration') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.reminder.fields.start_from_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.reminder.fields.duration_helper') }}</span>
             </div>
             <div class="form-group">
                 <label class="required" for="days_of_week">{{ trans('cruds.reminder.fields.days_of_week') }}</label>
@@ -59,6 +59,26 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.reminder.fields.days_of_week_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="start_from">{{ trans('cruds.reminder.fields.start_from') }}</label>
+                <input class="form-control {{ $errors->has('start_from') ? 'is-invalid' : '' }}" type="text" name="start_from" id="start_from" value="{{ old('start_from', $reminder->start_from) }}" required>
+                @if($errors->has('start_from'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('start_from') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.reminder.fields.start_from_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="time">{{ trans('cruds.reminder.fields.time') }}</label>
+                <input class="form-control timepicker {{ $errors->has('time') ? 'is-invalid' : '' }}" type="text" name="time" id="time" value="{{ old('time', $reminder->time) }}" required>
+                @if($errors->has('time'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('time') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.reminder.fields.time_helper') }}</span>
             </div>
             <div class="form-group">
                 <label class="required" for="snooze">{{ trans('cruds.reminder.fields.snooze') }}</label>

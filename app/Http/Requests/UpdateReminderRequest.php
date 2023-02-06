@@ -17,29 +17,35 @@ class UpdateReminderRequest extends FormRequest
     public function rules()
     {
         return [
+            'applying' => [
+                'string',
+                'required',
+            ],
             'doses' => [
                 'required',
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
             ],
-            'duration' => [
-                'required',
-                'string',
-               
-            ],
             'times' => [
                 'string',
                 'required',
             ],
-            'start_from' => [
-                'required',
+            'duration' => [
                 'string',
-              
+                'required',
             ],
             'days_of_week' => [
                 'string',
                 'required',
+            ],
+            'start_from' => [
+                'string',
+                'required',
+            ],
+            'time' => [
+                'required',
+                'date_format:' . config('panel.time_format'),
             ],
             'snooze' => [
                 'string',

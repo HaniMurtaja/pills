@@ -23,11 +23,13 @@ class Reminder extends Model
     ];
 
     protected $fillable = [
+        'applying',
         'doses',
-        'duration',
         'times',
-        'start_from',
+        'duration',
         'days_of_week',
+        'start_from',
+        'time',
         'snooze',
         'date',
         'user_reminder_id',

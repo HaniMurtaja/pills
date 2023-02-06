@@ -29,19 +29,25 @@
                         {{ trans('cruds.reminder.fields.id') }}
                     </th>
                     <th>
-                        {{ trans('cruds.reminder.fields.doses') }}
+                        {{ trans('cruds.reminder.fields.applying') }}
                     </th>
                     <th>
-                        {{ trans('cruds.reminder.fields.duration') }}
+                        {{ trans('cruds.reminder.fields.doses') }}
                     </th>
                     <th>
                         {{ trans('cruds.reminder.fields.times') }}
                     </th>
                     <th>
-                        {{ trans('cruds.reminder.fields.start_from') }}
+                        {{ trans('cruds.reminder.fields.duration') }}
                     </th>
                     <th>
                         {{ trans('cruds.reminder.fields.days_of_week') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.reminder.fields.start_from') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.reminder.fields.time') }}
                     </th>
                     <th>
                         {{ trans('cruds.reminder.fields.snooze') }}
@@ -112,14 +118,16 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
+{ data: 'applying', name: 'applying' },
 { data: 'doses', name: 'doses' },
-{ data: 'duration', name: 'duration' },
 { data: 'times', name: 'times' },
-{ data: 'start_from', name: 'start_from' },
+{ data: 'duration', name: 'duration' },
 { data: 'days_of_week', name: 'days_of_week' },
+{ data: 'start_from', name: 'start_from' },
+{ data: 'time', name: 'time' },
 { data: 'snooze', name: 'snooze' },
 { data: 'date', name: 'date' },
-{ data: 'user_reminder_user_id', name: 'user_reminder.user_id' },
+{ data: 'user_reminder_user', name: 'user_reminder_user' },
 { data: 'care_reminder', name: 'care_reminders.careby' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
