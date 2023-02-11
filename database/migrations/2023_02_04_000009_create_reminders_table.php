@@ -10,14 +10,12 @@ class CreateRemindersTable extends Migration
     {
         Schema::create('reminders', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('applying');
             $table->integer('doses');
             $table->string('duration');
             $table->string('times');
             $table->string('start_from');
             $table->string('days_of_week');
             $table->string('snooze');
-            $table->time('time');
             $table->date('date');
             $table->timestamps();
             $table->softDeletes();

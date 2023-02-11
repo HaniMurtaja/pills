@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('reminders', function (Blueprint $table) {
-            //
+            $table->time('time');
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('reminders', function (Blueprint $table) {
-            //
+            $table->dropColumn('time');
         });
     }
 };

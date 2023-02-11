@@ -12,15 +12,19 @@ Route::get('/home', function () {
 Route::get('userVerification/{token}', 'UserVerificationController@approve')->name('userVerification');
 Auth::routes();
 
+
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::get('/', 'HomeController@index')->name('home');
+
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
     Route::resource('permissions', 'PermissionsController');
 
+
     // Roles
     Route::delete('roles/destroy', 'RolesController@massDestroy')->name('roles.massDestroy');
     Route::resource('roles', 'RolesController');
+
 
     // Users
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
@@ -30,10 +34,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('users/process-csv-import', 'UsersController@processCsvImport')->name('users.processCsvImport');
     Route::resource('users', 'UsersController');
 
+
     // User Alerts
     Route::delete('user-alerts/destroy', 'UserAlertsController@massDestroy')->name('user-alerts.massDestroy');
     Route::get('user-alerts/read', 'UserAlertsController@read');
     Route::resource('user-alerts', 'UserAlertsController', ['except' => ['edit', 'update']]);
+
 
     // Content Category
     Route::delete('content-categories/destroy', 'ContentCategoryController@massDestroy')->name('content-categories.massDestroy');
@@ -49,11 +55,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('content-pages/ckmedia', 'ContentPageController@storeCKEditorImages')->name('content-pages.storeCKEditorImages');
     Route::resource('content-pages', 'ContentPageController');
 
+
     // Reminders
     Route::delete('reminders/destroy', 'RemindersController@massDestroy')->name('reminders.massDestroy');
     Route::post('reminders/parse-csv-import', 'RemindersController@parseCsvImport')->name('reminders.parseCsvImport');
     Route::post('reminders/process-csv-import', 'RemindersController@processCsvImport')->name('reminders.processCsvImport');
     Route::resource('reminders', 'RemindersController');
+
 
     // User Health
     Route::delete('user-healths/destroy', 'UserHealthController@massDestroy')->name('user-healths.massDestroy');
@@ -61,11 +69,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('user-healths/process-csv-import', 'UserHealthController@processCsvImport')->name('user-healths.processCsvImport');
     Route::resource('user-healths', 'UserHealthController');
 
+
     // User Medical History
     Route::delete('user-medical-histories/destroy', 'UserMedicalHistoryController@massDestroy')->name('user-medical-histories.massDestroy');
     Route::post('user-medical-histories/parse-csv-import', 'UserMedicalHistoryController@parseCsvImport')->name('user-medical-histories.parseCsvImport');
     Route::post('user-medical-histories/process-csv-import', 'UserMedicalHistoryController@processCsvImport')->name('user-medical-histories.processCsvImport');
     Route::resource('user-medical-histories', 'UserMedicalHistoryController');
+
 
     // User Docs
     Route::delete('user-docs/destroy', 'UserDocsController@massDestroy')->name('user-docs.massDestroy');
@@ -75,6 +85,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('user-docs/process-csv-import', 'UserDocsController@processCsvImport')->name('user-docs.processCsvImport');
     Route::resource('user-docs', 'UserDocsController');
 
+
     // Medical Guides
     Route::delete('medical-guides/destroy', 'MedicalGuidesController@massDestroy')->name('medical-guides.massDestroy');
     Route::post('medical-guides/media', 'MedicalGuidesController@storeMedia')->name('medical-guides.storeMedia');
@@ -82,6 +93,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('medical-guides/parse-csv-import', 'MedicalGuidesController@parseCsvImport')->name('medical-guides.parseCsvImport');
     Route::post('medical-guides/process-csv-import', 'MedicalGuidesController@processCsvImport')->name('medical-guides.processCsvImport');
     Route::resource('medical-guides', 'MedicalGuidesController');
+
 
     // Services
     Route::delete('services/destroy', 'ServicesController@massDestroy')->name('services.massDestroy');
@@ -91,26 +103,32 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('services/process-csv-import', 'ServicesController@processCsvImport')->name('services.processCsvImport');
     Route::resource('services', 'ServicesController');
 
+
     // Medicines
     Route::delete('medicines/destroy', 'MedicinesController@massDestroy')->name('medicines.massDestroy');
     Route::post('medicines/parse-csv-import', 'MedicinesController@parseCsvImport')->name('medicines.parseCsvImport');
     Route::post('medicines/process-csv-import', 'MedicinesController@processCsvImport')->name('medicines.processCsvImport');
     Route::resource('medicines', 'MedicinesController');
 
+    
     // Orders
     Route::delete('orders/destroy', 'OrdersController@massDestroy')->name('orders.massDestroy');
     Route::post('orders/parse-csv-import', 'OrdersController@parseCsvImport')->name('orders.parseCsvImport');
     Route::post('orders/process-csv-import', 'OrdersController@processCsvImport')->name('orders.processCsvImport');
     Route::resource('orders', 'OrdersController');
 
+
     // Payment Methods
     Route::delete('payment-methods/destroy', 'PaymentMethodsController@massDestroy')->name('payment-methods.massDestroy');
     Route::resource('payment-methods', 'PaymentMethodsController');
+
 
     // Subscriptions
     Route::delete('subscriptions/destroy', 'SubscriptionsController@massDestroy')->name('subscriptions.massDestroy');
     Route::resource('subscriptions', 'SubscriptionsController');
 });
+
+
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
     if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php'))) {
