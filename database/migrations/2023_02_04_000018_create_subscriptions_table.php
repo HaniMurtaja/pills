@@ -10,7 +10,6 @@ class CreateSubscriptionsTable extends Migration
     {
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user')->unique();
             $table->integer('payment_method')->nullable();
             $table->date('subsription_date');
             $table->timestamps();

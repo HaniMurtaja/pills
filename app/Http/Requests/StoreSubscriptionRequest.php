@@ -17,13 +17,6 @@ class StoreSubscriptionRequest extends FormRequest
     public function rules()
     {
         return [
-            'user' => [
-                'required',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-                'unique:subscriptions,user',
-            ],
             'payment_method' => [
                 'nullable',
                 'integer',

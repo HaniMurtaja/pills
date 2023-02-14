@@ -25,14 +25,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.subscription.fields.user') }}
-                        </th>
-                        <td>
-                            {{ $subscription->user }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.subscription.fields.payment_method') }}
                         </th>
                         <td>

@@ -29,9 +29,6 @@
                         {{ trans('cruds.reminder.fields.id') }}
                     </th>
                     <th>
-                        {{ trans('cruds.reminder.fields.applying') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.reminder.fields.doses') }}
                     </th>
                     <th>
@@ -45,9 +42,6 @@
                     </th>
                     <th>
                         {{ trans('cruds.reminder.fields.start_from') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.reminder.fields.time') }}
                     </th>
                     <th>
                         {{ trans('cruds.reminder.fields.snooze') }}
@@ -118,13 +112,11 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
-{ data: 'applying', name: 'applying' },
 { data: 'doses', name: 'doses' },
 { data: 'times', name: 'times' },
 { data: 'duration', name: 'duration' },
 { data: 'days_of_week', name: 'days_of_week' },
 { data: 'start_from', name: 'start_from' },
-{ data: 'time', name: 'time' },
 { data: 'snooze', name: 'snooze' },
 { data: 'date', name: 'date' },
 { data: 'user_reminder_user', name: 'user_reminder.user' },

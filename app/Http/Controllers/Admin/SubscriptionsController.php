@@ -47,9 +47,6 @@ class SubscriptionsController extends Controller
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : '';
             });
-            $table->editColumn('user', function ($row) {
-                return $row->user ? $row->user : '';
-            });
             $table->editColumn('payment_method', function ($row) {
                 return $row->payment_method ? $row->payment_method : '';
             });
@@ -70,7 +67,7 @@ class SubscriptionsController extends Controller
     {
         abort_if(Gate::denies('subscription_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user_subs = User::pluck('user', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $user_subs = User::pluck('user_id', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.subscriptions.create', compact('user_subs'));
     }
@@ -86,7 +83,7 @@ class SubscriptionsController extends Controller
     {
         abort_if(Gate::denies('subscription_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user_subs = User::pluck('user', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $user_subs = User::pluck('user_id', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $subscription->load('user_subs');
 

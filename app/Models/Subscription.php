@@ -23,7 +23,6 @@ class Subscription extends Model
     ];
 
     protected $fillable = [
-        'user',
         'payment_method',
         'subsription_date',
         'user_subs_id',

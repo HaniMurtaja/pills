@@ -17,13 +17,6 @@ class UpdateSubscriptionRequest extends FormRequest
     public function rules()
     {
         return [
-            'user' => [
-                'required',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-                'unique:subscriptions,user,' . request()->route('subscription')->id,
-            ],
             'payment_method' => [
                 'nullable',
                 'integer',

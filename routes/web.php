@@ -110,7 +110,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('medicines/process-csv-import', 'MedicinesController@processCsvImport')->name('medicines.processCsvImport');
     Route::resource('medicines', 'MedicinesController');
 
-    
+
     // Orders
     Route::delete('orders/destroy', 'OrdersController@massDestroy')->name('orders.massDestroy');
     Route::post('orders/parse-csv-import', 'OrdersController@parseCsvImport')->name('orders.parseCsvImport');
@@ -120,11 +120,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Payment Methods
     Route::delete('payment-methods/destroy', 'PaymentMethodsController@massDestroy')->name('payment-methods.massDestroy');
+    Route::post('payment-methods/parse-csv-import', 'PaymentMethodsController@parseCsvImport')->name('payment-methods.parseCsvImport');
+    Route::post('payment-methods/process-csv-import', 'PaymentMethodsController@processCsvImport')->name('payment-methods.processCsvImport');
     Route::resource('payment-methods', 'PaymentMethodsController');
 
 
     // Subscriptions
     Route::delete('subscriptions/destroy', 'SubscriptionsController@massDestroy')->name('subscriptions.massDestroy');
+    Route::post('subscriptions/parse-csv-import', 'SubscriptionsController@parseCsvImport')->name('subscriptions.parseCsvImport');
+    Route::post('subscriptions/process-csv-import', 'SubscriptionsController@processCsvImport')->name('subscriptions.processCsvImport');
     Route::resource('subscriptions', 'SubscriptionsController');
 });
 

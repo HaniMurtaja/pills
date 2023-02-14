@@ -48,9 +48,6 @@ class RemindersController extends Controller
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : '';
             });
-            $table->editColumn('applying', function ($row) {
-                return $row->applying ? $row->applying : '';
-            });
             $table->editColumn('doses', function ($row) {
                 return $row->doses ? $row->doses : '';
             });
@@ -65,9 +62,6 @@ class RemindersController extends Controller
             });
             $table->editColumn('start_from', function ($row) {
                 return $row->start_from ? $row->start_from : '';
-            });
-            $table->editColumn('time', function ($row) {
-                return $row->time ? $row->time : '';
             });
             $table->editColumn('snooze', function ($row) {
                 return $row->snooze ? $row->snooze : '';

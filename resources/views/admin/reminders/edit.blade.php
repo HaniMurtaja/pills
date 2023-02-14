@@ -11,16 +11,6 @@
             @method('PUT')
             @csrf
             <div class="form-group">
-                <label class="required" for="applying">{{ trans('cruds.reminder.fields.applying') }}</label>
-                <input class="form-control {{ $errors->has('applying') ? 'is-invalid' : '' }}" type="text" name="applying" id="applying" value="{{ old('applying', $reminder->applying) }}" required>
-                @if($errors->has('applying'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('applying') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.reminder.fields.applying_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label class="required" for="doses">{{ trans('cruds.reminder.fields.doses') }}</label>
                 <input class="form-control {{ $errors->has('doses') ? 'is-invalid' : '' }}" type="number" name="doses" id="doses" value="{{ old('doses', $reminder->doses) }}" step="1" required>
                 @if($errors->has('doses'))
@@ -69,16 +59,6 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.reminder.fields.start_from_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="time">{{ trans('cruds.reminder.fields.time') }}</label>
-                <input class="form-control timepicker {{ $errors->has('time') ? 'is-invalid' : '' }}" type="text" name="time" id="time" value="{{ old('time', $reminder->time) }}" required>
-                @if($errors->has('time'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('time') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.reminder.fields.time_helper') }}</span>
             </div>
             <div class="form-group">
                 <label class="required" for="snooze">{{ trans('cruds.reminder.fields.snooze') }}</label>

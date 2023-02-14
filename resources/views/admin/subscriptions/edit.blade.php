@@ -11,16 +11,6 @@
             @method('PUT')
             @csrf
             <div class="form-group">
-                <label class="required" for="user">{{ trans('cruds.subscription.fields.user') }}</label>
-                <input class="form-control {{ $errors->has('user') ? 'is-invalid' : '' }}" type="number" name="user" id="user" value="{{ old('user', $subscription->user) }}" step="1" required>
-                @if($errors->has('user'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('user') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.subscription.fields.user_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label for="payment_method">{{ trans('cruds.subscription.fields.payment_method') }}</label>
                 <input class="form-control {{ $errors->has('payment_method') ? 'is-invalid' : '' }}" type="number" name="payment_method" id="payment_method" value="{{ old('payment_method', $subscription->payment_method) }}" step="1">
                 @if($errors->has('payment_method'))
