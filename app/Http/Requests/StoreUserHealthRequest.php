@@ -17,11 +17,11 @@ class StoreUserHealthRequest extends FormRequest
     public function rules()
     {
         return [
-            'careby' => [
+            'careby_id' => [
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
-                'unique:user_healths,careby',
+                'unique:user_healths,careby_id',
             ],
             'name' => [
                 'string',

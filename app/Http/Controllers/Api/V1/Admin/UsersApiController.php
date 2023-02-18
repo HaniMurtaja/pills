@@ -25,6 +25,7 @@ class UsersApiController extends Controller
 
     public function store(StoreUserRequest $request)
     {
+
         $user = User::create($request->all());
         $user->roles()->sync($request->input('roles', []));
         $user->carebies()->sync($request->input('carebies', []));
@@ -44,6 +45,7 @@ class UsersApiController extends Controller
         return new UserResource($user->load(['roles', 'carebies']));
     }
 
+    
     public function update(UpdateUserRequest $request, User $user)
     {
         $user->update($request->all());
@@ -65,6 +67,7 @@ class UsersApiController extends Controller
             ->setStatusCode(Response::HTTP_ACCEPTED);
     }
 
+
     public function destroy(User $user)
     {
         abort_if(Gate::denies('user_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -74,3 +77,4 @@ class UsersApiController extends Controller
         return response(null, Response::HTTP_NO_CONTENT);
     }
 }
+

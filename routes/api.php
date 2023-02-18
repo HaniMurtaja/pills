@@ -1,52 +1,60 @@
 <?php
 
-Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:sanctum']], function () {
+Route::group(['prefix' => 'v1', 'namespace' => 'Api\V1\Admin'], function () {
+    //Auth
+    Route::post('register', 'AuthController@register');// done
+    Route::post('login', 'AuthController@login'); //done
+
+    //Forget Password
+    Route::post('password/email', 'ForgotPasswordController@forgot');
+
+    Route::group(['as' => 'api.', 'middleware' => ['auth:sanctum']], function () {
     // Users
-    Route::post('users/media', 'UsersApiController@storeMedia')->name('users.storeMedia');
-    Route::apiResource('users', 'UsersApiController');
-    Route::post('register', 'AuthController@register');
-    Route::post('login', 'AuthController@login');
+    Route::post('users/media', 'UsersApiController@storeMedia')->name('users.storeMedia');//done
+    Route::apiResource('users', 'UsersApiController');//done
 
-
+    
     // Reminders
-    Route::apiResource('reminders', 'RemindersApiController');
+    Route::apiResource('reminders', 'RemindersApiController'); //done
 
 
     // User Health
-    Route::apiResource('user-healths', 'UserHealthApiController');
+    Route::apiResource('user-healths', 'UserHealthApiController'); //done
 
 
     // User Medical History
-    Route::apiResource('user-medical-histories', 'UserMedicalHistoryApiController');
+    Route::apiResource('user-medical-histories', 'UserMedicalHistoryApiController'); //done
 
 
     // User Docs
-    Route::post('user-docs/media', 'UserDocsApiController@storeMedia')->name('user-docs.storeMedia');
-    Route::apiResource('user-docs', 'UserDocsApiController');
+    Route::post('user-docs/media', 'UserDocsApiController@storeMedia')->name('user-docs.storeMedia'); //done
+    Route::apiResource('user-docs', 'UserDocsApiController'); //done
 
 
     // Medical Guides
-    Route::post('medical-guides/media', 'MedicalGuidesApiController@storeMedia')->name('medical-guides.storeMedia');
-    Route::apiResource('medical-guides', 'MedicalGuidesApiController');
+    Route::post('medical-guides/media', 'MedicalGuidesApiController@storeMedia')->name('medical-guides.storeMedia'); //done
+    Route::apiResource('medical-guides', 'MedicalGuidesApiController');//done
 
 
     // Services
-    Route::post('services/media', 'ServicesApiController@storeMedia')->name('services.storeMedia');
-    Route::apiResource('services', 'ServicesApiController');
+    Route::post('services/media', 'ServicesApiController@storeMedia')->name('services.storeMedia'); //done
+    Route::apiResource('services', 'ServicesApiController'); //done
 
-    
+
     // Medicines
-    Route::apiResource('medicines', 'MedicinesApiController');
+    Route::apiResource('medicines', 'MedicinesApiController'); //done
 
 
     // Orders
-    Route::apiResource('orders', 'OrdersApiController');
+    Route::apiResource('orders', 'OrdersApiController'); //done
 
 
      // Payment Methods
-     Route::apiResource('payment-methods', 'PaymentMethodsApiController');
+//     Route::apiResource('payment-methods', 'PaymentMethodsApiController');
 
 
      // Subscriptions
-     Route::apiResource('subscriptions', 'SubscriptionsApiController');
+//     Route::apiResource('subscriptions', 'SubscriptionsApiController');
+
+});
 });

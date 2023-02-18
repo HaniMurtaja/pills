@@ -8,6 +8,7 @@ trait MediaUploadingTrait
 {
     public function storeMedia(Request $request)
     {
+
         // Validates file size
         if (request()->has('size')) {
             $this->validate(request(), [
@@ -46,3 +47,4 @@ trait MediaUploadingTrait
         ]);
     }
 }
+

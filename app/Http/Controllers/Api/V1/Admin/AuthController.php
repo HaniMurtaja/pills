@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\v1\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -12,7 +13,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6'
         ]);
 
@@ -22,7 +23,7 @@ class AuthController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
-        $user->roles()->attach(2); 
+        $user->roles()->attach(2);
 
         return response()->json($user);
     }
