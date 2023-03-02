@@ -4,7 +4,8 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api\V1\Admin'], function () {
     //Auth
     Route::post('register', 'AuthController@register');// done
     Route::post('login', 'AuthController@login'); //done
-    Route::post('register_firebase', [FirebaseAuthController::class,'store']); //done
+    Route::post('register_firebase', 'FirebaseAuthController@store'); //done
+  
 
     //Forget Password
     Route::post('password/email', 'ForgotPasswordController@forgot');
