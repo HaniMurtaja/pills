@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Providers;
 
 use App\Models\User;
@@ -28,19 +29,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Auth::viaRequest('firebase', function (Request $request) {
-            $token = $request->bearerToken();
-
-            try {
-                $payload = (new FirebaseToken($token))->verify(
-                    config('services.firebase.project_id')
-                );
-
-                return User::where('firebase_id',$payload->user_id)->first();
-            } catch (\Exception $e) {
-                return null;
-            }
-        });
     }
-    }
+}
 

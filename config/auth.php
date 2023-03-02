@@ -41,7 +41,7 @@ return [
         ],
 
         'api' => [
-            'driver' => 'firebase',
+            'driver' => 'token',
             'provider' => 'users',
             'hash'     => false,
         ],

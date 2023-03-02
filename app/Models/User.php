@@ -88,7 +88,7 @@ class User extends Authenticatable implements HasMedia
                     $user->roles()->attach($registrationRole);
                 }
 
-                $user->notify(new VerifyUserNotification($user));
+//                $user->notify(new VerifyUserNotification($user));
             }
         });
     }

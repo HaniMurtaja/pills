@@ -1,21 +1,26 @@
 <?php
 
+
+use App\Http\Controllers\Api\V1\Admin\FirebaseAuthController;
+use Illuminate\Support\Facades\Route;
+
 Route::group(['prefix' => 'v1', 'namespace' => 'Api\V1\Admin'], function () {
     //Auth
     Route::post('register', 'AuthController@register');// done
     Route::post('login', 'AuthController@login'); //done
-    Route::post('register_firebase', 'FirebaseAuthController@store'); //done
-  
-
+//    Route::post('register_firebase', [FirebaseAuthController::class,'store']); //done
     //Forget Password
     Route::post('password/email', 'ForgotPasswordController@forgot');
 
     Route::group(['as' => 'api.', 'middleware' => ['auth:sanctum']], function () {
+
+        Route::post('logout', 'AuthController@logout'); //done
     // Users
     Route::post('users/media', 'UsersApiController@storeMedia')->name('users.storeMedia');//done
     Route::apiResource('users', 'UsersApiController');//done
 
-    
+
+
     // Reminders
     Route::apiResource('reminders', 'RemindersApiController'); //done
 
@@ -57,6 +62,5 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api\V1\Admin'], function () {
 
      // Subscriptions
 //     Route::apiResource('subscriptions', 'SubscriptionsApiController');
-
 });
 });
