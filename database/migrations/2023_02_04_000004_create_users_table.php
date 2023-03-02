@@ -10,6 +10,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('firebase_id')->change();
             $table->integer('user_id')->nullable()->unique();
             $table->string('name')->nullable();
             $table->string('email')->nullable()->unique();
