@@ -16,6 +16,10 @@ class UsersApiController extends Controller
 {
     use MediaUploadingTrait;
 
+    public function user_basic_info(){
+
+
+    }
     public function index()
     {
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -45,7 +49,6 @@ class UsersApiController extends Controller
         return new UserResource($user->load(['roles', 'carebies']));
     }
 
-    
     public function update(UpdateUserRequest $request, User $user)
     {
         $user->update($request->all());
@@ -66,7 +69,6 @@ class UsersApiController extends Controller
             ->response()
             ->setStatusCode(Response::HTTP_ACCEPTED);
     }
-
 
     public function destroy(User $user)
     {

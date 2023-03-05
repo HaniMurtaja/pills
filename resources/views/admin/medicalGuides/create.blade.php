@@ -39,8 +39,9 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.medicalGuide.fields.guide_phone_helper') }}</span>
             </div>
+            
             <div class="form-group">
-                <label class="required" for="guide_image">{{ trans('cruds.medicalGuide.fields.guide_image') }}</label>
+                <label for="guide_image">{{ trans('cruds.medicalGuide.fields.guide_image') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('guide_image') ? 'is-invalid' : '' }}" id="guide_image-dropzone">
                 </div>
                 @if($errors->has('guide_image'))
@@ -50,6 +51,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.medicalGuide.fields.guide_image_helper') }}</span>
             </div>
+
             <div class="form-group">
                 <label class="required" for="guide_working_hours">{{ trans('cruds.medicalGuide.fields.guide_working_hours') }}</label>
                 <input class="form-control {{ $errors->has('guide_working_hours') ? 'is-invalid' : '' }}" type="text" name="guide_working_hours" id="guide_working_hours" value="{{ old('guide_working_hours', '') }}" required>

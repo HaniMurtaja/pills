@@ -13,9 +13,12 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api\V1\Admin'], function () {
     Route::post('password/email', 'ForgotPasswordController@forgot');
 
     Route::group(['as' => 'api.', 'middleware' => ['auth:sanctum']], function () {
+        //logout
+      Route::post('logout', 'AuthController@logout'); //done
+        //user_basic_info
+        Route::post('user_basic_info_store', 'UserBasicInfoController@user_basic_info_store'); //done
 
-        Route::post('logout', 'AuthController@logout'); //done
-    // Users
+        // Users
     Route::post('users/media', 'UsersApiController@storeMedia')->name('users.storeMedia');//done
     Route::apiResource('users', 'UsersApiController');//done
 

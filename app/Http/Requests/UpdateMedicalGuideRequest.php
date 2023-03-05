@@ -30,7 +30,7 @@ class UpdateMedicalGuideRequest extends FormRequest
                 'required',
             ],
             'guide_image' => [
-                'required',
+                'nullable',
             ],
             'guide_working_hours' => [
                 'string',
