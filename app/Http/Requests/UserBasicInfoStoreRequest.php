@@ -26,9 +26,8 @@ class UserBasicInfoStoreRequest extends FormRequest
         return [
 
             'full_name'=>'required',
-            'country_code'=>'required',
             'phone'=>'required',
-            'date_of_birth'=>'required',
+            'date_of_birth'=>'required|date',
             'image'=>'nullable|image|max:1024',
         ];
     }

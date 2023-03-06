@@ -13,6 +13,7 @@ class CreateMedicalGuidesTable extends Migration
             $table->string('guide_name');
             $table->string('guide_category');
             $table->string('guide_phone');
+            $table->string('guide_image');
             $table->string('guide_working_hours');
             $table->string('guide_status');
             $table->string('guide_address');

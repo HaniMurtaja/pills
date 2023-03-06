@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Api\V1\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserBasicInfoStoreRequest;
 use App\Http\Resources\Admin\UserInfoResource;
+use App\Models\User;
 use App\Models\UserBasicInfo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserBasicInfoController extends Controller
 {
@@ -15,30 +17,21 @@ class UserBasicInfoController extends Controller
     {
         try {
 
+            DB::beginTransaction();
 
             $data['image'] = $request->image;
-            $data['full_name'] = $request->full_name;
-            $data['country_code'] = $request->country_code;
+            $data['name'] = $request->full_name;
             $data['phone'] = $request->phone;
-            $data['date_of_birth'] = $request->date_of_birth;
+            $data['dob'] = $request->date_of_birth;
 
+            $user_basic_info = User::create($data);
 
-
-
-            if($request->file('image')){
-                $file = $request->file('image');
-                $filename = time().'_'.$file->getClientOriginalName();
-
-                // File upload location
-                $location = "assets/user_info";
-
-                // Upload file
-                $path =  $file->move($location,$filename);
-                $data['image'] = $path;
+            if ($request->input('image', false)) {
+                $user_basic_info->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
             }
 
-            $user_basic_info = UserBasicInfo::create($data);
 
+            DB::commit();
             return response()->json([
                 'status' => true,
                 'message' => 'Created Successfully',
@@ -47,6 +40,7 @@ class UserBasicInfoController extends Controller
 
 
         } catch (\Throwable $th) {
+            DB::rollBack();
             return response()->json([
                 'status' => false,
                 'message' => $th->getMessage()

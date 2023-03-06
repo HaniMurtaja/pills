@@ -49,6 +49,8 @@ class User extends Authenticatable implements HasMedia
         'user_id',
         'name',
         'email',
+        'image',
+        'dob',
         'email_verified_at',
         'password',
         'approved',

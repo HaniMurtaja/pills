@@ -10,11 +10,13 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('firebase_id')->change();
             $table->integer('user_id')->nullable()->unique();
             $table->string('name')->nullable();
             $table->string('email')->nullable()->unique();
             $table->datetime('email_verified_at')->nullable();
+            $table->string('image');
+            $table->date('dob');
+            $table->string('phone')->nullable();
             $table->string('password')->nullable();
             $table->boolean('approved')->default(0)->nullable();
             $table->boolean('verified')->default(0)->nullable();
@@ -22,7 +24,6 @@ class CreateUsersTable extends Migration
             $table->string('verification_token')->nullable();
             $table->string('remember_token')->nullable();
             $table->string('address')->nullable();
-            $table->string('phone')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
