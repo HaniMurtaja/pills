@@ -28,9 +28,9 @@ class User extends Authenticatable implements HasMedia
 
     public $table = 'users';
 
-    protected $appends = [
-        'image',
-    ];
+//    protected $appends = [
+//        'image',
+//    ];
 
     protected $hidden = [
         'remember_token',
@@ -156,16 +156,16 @@ class User extends Authenticatable implements HasMedia
         $this->attributes['email_verified_at'] = $value ? Carbon::createFromFormat(config('panel.date_format') . ' ' . config('panel.time_format'), $value)->format('Y-m-d H:i:s') : null;
     }
 
-    public function getImageAttribute()
+    public function getImageAttribute($key)
     {
-        $file = $this->getMedia('image')->last();
-        if ($file) {
-            $file->url       = $file->getUrl();
-            $file->thumbnail = $file->getUrl('thumb');
-            $file->preview   = $file->getUrl('preview');
-        }
+//        $file = $this->getMedia('image')->last();
+//        if ($file) {
+//            $file->url       = $file->getUrl();
+//            $file->thumbnail = $file->getUrl('thumb');
+//            $file->preview   = $file->getUrl('preview');
+//        }
 
-        return $file;
+        return asset($key);
     }
 
     public function setPasswordAttribute($input)

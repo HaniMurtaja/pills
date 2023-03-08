@@ -19,18 +19,26 @@ class UserBasicInfoController extends Controller
 
             DB::beginTransaction();
 
-            $data['image'] = $request->image;
+
             $data['name'] = $request->full_name;
             $data['phone'] = $request->phone;
             $data['dob'] = $request->date_of_birth;
 
-            $user_basic_info = User::create($data);
 
-            if ($request->input('image', false)) {
-                $user_basic_info->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
+
+
+            if($request->file('image')){
+                $file = $request->file('image');
+                $filename = time().'_'.$file->getClientOriginalName();
+
+                // File upload location
+                $location = 'users';
+
+                // Upload file
+                $path =  $file->move($location,$filename);
+                $data['image'] = $path;
             }
-
-
+            $user_basic_info = User::create($data);
             DB::commit();
             return response()->json([
                 'status' => true,
