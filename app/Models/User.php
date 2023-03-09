@@ -50,7 +50,7 @@ class User extends Authenticatable implements HasMedia
         'name',
         'email',
         'image',
-        'dob',
+        'date_of_birth',
         'email_verified_at',
         'password',
         'approved',
@@ -156,17 +156,7 @@ class User extends Authenticatable implements HasMedia
         $this->attributes['email_verified_at'] = $value ? Carbon::createFromFormat(config('panel.date_format') . ' ' . config('panel.time_format'), $value)->format('Y-m-d H:i:s') : null;
     }
 
-    public function getImageAttribute($key)
-    {
-//        $file = $this->getMedia('image')->last();
-//        if ($file) {
-//            $file->url       = $file->getUrl();
-//            $file->thumbnail = $file->getUrl('thumb');
-//            $file->preview   = $file->getUrl('preview');
-//        }
-
-        return asset($key);
-    }
+ 
 
     public function setPasswordAttribute($input)
     {
