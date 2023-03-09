@@ -25,9 +25,6 @@
                             {{ trans('cruds.reminder.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.reminder.fields.applying') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.reminder.fields.doses') }}
                         </th>
                         <th>
@@ -41,9 +38,6 @@
                         </th>
                         <th>
                             {{ trans('cruds.reminder.fields.start_from') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.reminder.fields.time') }}
                         </th>
                         <th>
                             {{ trans('cruds.reminder.fields.snooze') }}
@@ -70,9 +64,6 @@
                             </td>
                             <td>
                                 {{ $reminder->id ?? '' }}
-                            </td>
-                            <td>
-                                {{ $reminder->applying ?? '' }}
                             </td>
                             <td>
                                 {{ $reminder->doses ?? '' }}
