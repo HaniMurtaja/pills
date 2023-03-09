@@ -44,6 +44,10 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api\V1\Admin'], function () {
     // Medical Guides
     Route::post('medical-guides/media', 'MedicalGuidesApiController@storeMedia')->name('medical-guides.storeMedia'); //done
     Route::apiResource('medical-guides', 'MedicalGuidesApiController');//done
+    Route::get('medical-guides-doctors', 'MedicalGuidesApiController@doctors');//done
+    Route::get('medical-guides-hospitals', 'MedicalGuidesApiController@hospitals');//done
+    Route::get('medical-guides-heathcenter', 'MedicalGuidesApiController@heathcenter');//done
+    Route::get('medical-guides-pharmacy', 'MedicalGuidesApiController@pharmacy');//done
 
 
     // Services

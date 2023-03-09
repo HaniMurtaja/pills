@@ -20,7 +20,47 @@ class MedicalGuidesApiController extends Controller
     {
         abort_if(Gate::denies('medical_guide_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new MedicalGuideResource(MedicalGuide::all());
+        return  MedicalGuideResource::collection(MedicalGuide::all());
+    }
+
+    public function doctors()
+    {
+        abort_if(Gate::denies('medical_guide_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $medical_guides = MedicalGuide::where("guide_category","doctors")->get();
+
+        return  MedicalGuideResource::collection($medical_guides);
+
+    }
+
+    public function hospitals()
+    {
+        abort_if(Gate::denies('medical_guide_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $medical_guides = MedicalGuide::where("guide_category","hospitals")->get();
+
+        return  MedicalGuideResource::collection($medical_guides);
+
+    }
+
+    public function heathcenter()
+    {
+        abort_if(Gate::denies('medical_guide_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $medical_guides = MedicalGuide::where("guide_category","health_centers")->get();
+
+        return  MedicalGuideResource::collection($medical_guides);
+
+    }
+    
+    public function pharmacy()
+    {
+        abort_if(Gate::denies('medical_guide_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $medical_guides = MedicalGuide::where("guide_category","pharmacy")->get();
+
+        return  MedicalGuideResource::collection($medical_guides);
+
     }
 
     public function store(StoreMedicalGuideRequest $request)
