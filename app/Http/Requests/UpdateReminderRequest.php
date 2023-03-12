@@ -25,7 +25,7 @@ class UpdateReminderRequest extends FormRequest
             ],
             'times' => [
                 'string',
-                'required',
+                
             ],
             'duration' => [
                 'string',
