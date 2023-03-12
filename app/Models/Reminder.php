@@ -24,6 +24,7 @@ class Reminder extends Model
 
     protected $fillable = [
         'doses',
+        'applying',
         'time',
         'times',
         'duration',
