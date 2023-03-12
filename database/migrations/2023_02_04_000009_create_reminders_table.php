@@ -11,7 +11,6 @@ class CreateRemindersTable extends Migration
         Schema::create('reminders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('doses');
-            $table->string('applying')->nullable();
             $table->string('duration');
             $table->string('times');
             $table->string('start_from');

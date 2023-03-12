@@ -48,6 +48,11 @@ class Medicine extends Model
         return $this->belongsTo(User::class, 'user_med_id');
     }
 
+    public function care_med()
+    {
+        return $this->belongsTo(User::class, 'care_medicine_id');
+    }
+
     public function care_meds()
     {
         return $this->belongsToMany(UserHealth::class);

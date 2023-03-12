@@ -47,12 +47,12 @@ class UpdateUserRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'carebies' => [
-                'integer',
-            ],
-            'carebies' => [
-                'array',
-            ],
+//            'carebies' => [
+//                'integer',
+//            ],
+//            'carebies' => [
+//                'array',
+//            ],
         ];
     }
 }

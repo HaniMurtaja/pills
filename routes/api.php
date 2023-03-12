@@ -62,8 +62,24 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api\V1\Admin'], function () {
     // Orders
     Route::apiResource('orders', 'OrdersApiController'); //done
 
+        //Cares
+        //care_basic_info
+        Route::post('care_basic_info_store', 'CareBasicInfoController@care_basic_info_store'); //done
 
-     // Payment Methods
+        //care_reminder_store
+        Route::get('care_reminders', 'CareReminderController@index'); //done
+        Route::post('care_reminder_store', 'CareReminderController@store'); //done
+
+            //care_user_heath
+        Route::post('care_user_heath_store', 'CareUserHealthApiController@store'); //done
+        Route::get('care_user_heath', 'CareReminderController@index'); //done
+
+
+        //Care-medical-histories
+        Route::post('care_medical_histories_store', 'CareMedicalHistoryController@store'); //done
+        Route::get('care_medical_histories', 'CareMedicalHistoryController@index'); //done
+
+        // Payment Methods
 //     Route::apiResource('payment-methods', 'PaymentMethodsApiController');
 
 

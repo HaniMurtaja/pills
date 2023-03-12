@@ -24,6 +24,7 @@ class UserMedicalHistory extends Model
         'disease_name',
         'description',
         'user_history_id',
+        'care_medical_history_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -32,6 +33,11 @@ class UserMedicalHistory extends Model
     public function user_history()
     {
         return $this->belongsTo(User::class, 'user_history_id');
+    }
+
+    public function care_history()
+    {
+        return $this->belongsTo(User::class, 'care_medical_history_id');
     }
 
     public function care_histories()

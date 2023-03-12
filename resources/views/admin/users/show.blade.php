@@ -109,16 +109,16 @@
                             {{ $user->phone }}
                         </td>
                     </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.user.fields.carebies') }}
-                        </th>
-                        <td>
-                            @foreach($user->carebies as $key => $carebies)
-                                <span class="label label-info">{{ $carebies->careby }}</span>
-                            @endforeach
-                        </td>
-                    </tr>
+{{--                    <tr>--}}
+{{--                        <th>--}}
+{{--                            {{ trans('cruds.user.fields.carebies') }}--}}
+{{--                        </th>--}}
+{{--                        <td>--}}
+{{--                            @foreach($user->carebies as $key => $carebies)--}}
+{{--                                <span class="label label-info">{{ $carebies->careby }}</span>--}}
+{{--                            @endforeach--}}
+{{--                        </td>--}}
+{{--                    </tr>--}}
                 </tbody>
             </table>
             <div class="form-group">

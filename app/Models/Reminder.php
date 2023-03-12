@@ -24,7 +24,7 @@ class Reminder extends Model
 
     protected $fillable = [
         'doses',
-        'applying',
+        'time',
         'times',
         'duration',
         'days_of_week',
@@ -32,6 +32,7 @@ class Reminder extends Model
         'snooze',
         'date',
         'user_reminder_id',
+        'care_reminder_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -50,6 +51,10 @@ class Reminder extends Model
     public function user_reminder()
     {
         return $this->belongsTo(User::class, 'user_reminder_id');
+    }
+    public function care_reminder()
+    {
+        return $this->belongsTo(User::class, 'care_reminder_id');
     }
 
     public function care_reminders()

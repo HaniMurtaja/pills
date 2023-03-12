@@ -13,4 +13,9 @@ class AddRelationshipFieldsToSubscriptionsTable extends Migration
             $table->foreign('user_subs_id', 'user_subs_fk_7975226')->references('id')->on('users');
         });
     }
+
+    public function down()
+    {
+        Schema::dropIfExists('subscriptions');
+    }
 }

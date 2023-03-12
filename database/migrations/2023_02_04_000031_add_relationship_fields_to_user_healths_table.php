@@ -13,4 +13,9 @@ class AddRelationshipFieldsToUserHealthsTable extends Migration
             $table->foreign('user_id', 'user_fk_7975207')->references('id')->on('users');
         });
     }
+
+    public function down()
+    {
+        Schema::dropIfExists('user_healths');
+    }
 }

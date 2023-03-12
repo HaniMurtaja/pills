@@ -13,4 +13,9 @@ class AddRelationshipFieldsToUserMedicalHistoriesTable extends Migration
             $table->foreign('user_history_id', 'user_history_fk_7975224')->references('id')->on('users');
         });
     }
+
+    public function down()
+    {
+        Schema::dropIfExists('user_medical_histories');
+    }
 }

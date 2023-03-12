@@ -112,24 +112,24 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.phone_helper') }}</span>
             </div>
-            <div class="form-group">
-                <label for="carebies">{{ trans('cruds.user.fields.carebies') }}</label>
-                <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
-                </div>
-                <select class="form-control select2 {{ $errors->has('carebies') ? 'is-invalid' : '' }}" name="carebies[]" id="carebies" >
-                    @foreach($carebies as $id => $careby)
-                        <option value="{{ $id }}" {{ (in_array($id, old('carebies', [])) || $user->carebies->contains($id)) ? 'selected' : '' }}>{{ $careby }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('carebies'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('carebies') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.user.fields.carebies_helper') }}</span>
-            </div>
+{{--            <div class="form-group">--}}
+{{--                <label for="carebies">{{ trans('cruds.user.fields.carebies') }}</label>--}}
+{{--                <div style="padding-bottom: 4px">--}}
+{{--                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>--}}
+{{--                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>--}}
+{{--                </div>--}}
+{{--                <select class="form-control select2 {{ $errors->has('carebies') ? 'is-invalid' : '' }}" name="carebies[]" id="carebies" >--}}
+{{--                    @foreach($carebies as $id => $careby)--}}
+{{--                        <option value="{{ $id }}" {{ (in_array($id, old('carebies', [])) || $user->carebies->contains($id)) ? 'selected' : '' }}>{{ $careby }}</option>--}}
+{{--                    @endforeach--}}
+{{--                </select>--}}
+{{--                @if($errors->has('carebies'))--}}
+{{--                    <div class="invalid-feedback">--}}
+{{--                        {{ $errors->first('carebies') }}--}}
+{{--                    </div>--}}
+{{--                @endif--}}
+{{--                <span class="help-block">{{ trans('cruds.user.fields.carebies_helper') }}</span>--}}
+{{--            </div>--}}
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}

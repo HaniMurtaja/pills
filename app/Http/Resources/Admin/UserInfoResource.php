@@ -15,10 +15,10 @@ class UserInfoResource extends JsonResource
     public function toArray($request)
     {
         $data= [
-            'full_name'=>$this->name,
+            'name'=>$this->name,
             'phone'=>$this->phone,
-            'dob'=>$this->dob,
-            'image'=> $this->image,
+            'date_of_brith'=>$this->date_of_brith,
+            'image'=>url($this->getRawOriginal('image')),
 
 
         ];

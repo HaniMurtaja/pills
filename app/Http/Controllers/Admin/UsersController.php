@@ -92,6 +92,7 @@ class UsersController extends Controller
             $table->editColumn('phone', function ($row) {
                 return $row->phone ? $row->phone : '';
             });
+
             $table->editColumn('carebies', function ($row) {
                 $labels = [];
                 foreach ($row->carebies as $careby) {
@@ -101,7 +102,7 @@ class UsersController extends Controller
                 return implode(' ', $labels);
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'image', 'approved', 'verified', 'roles', 'carebies']);
+            $table->rawColumns(['actions', 'placeholder', 'image', 'approved', 'verified', 'roles','carebies']);
 
             return $table->make(true);
         }
@@ -124,7 +125,7 @@ class UsersController extends Controller
     {
         $user = User::create($request->all());
         $user->roles()->sync($request->input('roles', []));
-        $user->carebies()->sync($request->input('carebies', []));
+//        $user->carebies()->sync($request->input('carebies', []));
         if ($request->input('image', false)) {
             $user->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
         }
@@ -153,7 +154,7 @@ class UsersController extends Controller
     {
         $user->update($request->all());
         $user->roles()->sync($request->input('roles', []));
-        $user->carebies()->sync($request->input('carebies', []));
+//        $user->carebies()->sync($request->input('carebies', []));
         if ($request->input('image', false)) {
             if (!$user->image || $request->input('image') !== $user->image->file_name) {
                 if ($user->image) {

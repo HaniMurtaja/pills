@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CareBasicInfoStoreRequest;
 use App\Http\Requests\UserBasicInfoStoreRequest;
 use App\Http\Resources\Admin\UserInfoResource;
 use App\Models\User;
@@ -10,10 +11,10 @@ use App\Models\UserBasicInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class UserBasicInfoController extends Controller
+class CareBasicInfoController extends Controller
 {
 
-    public function user_basic_info_store(UserBasicInfoStoreRequest $request)
+    public function care_basic_info_store(CareBasicInfoStoreRequest $request)
     {
         try {
 
@@ -22,8 +23,9 @@ class UserBasicInfoController extends Controller
 
             $data['name'] = $request->name;
             $data['phone'] = $request->phone;
+            $data['gender'] = $request->gender;
             $data['date_of_brith'] = $request->date_of_brith;
-
+            $user_id = request()->user()->id;
 
 
 
@@ -38,8 +40,8 @@ class UserBasicInfoController extends Controller
                 $path =  $file->move($location,$filename);
                 $data['image'] = $path;
             }
-            
             $user_basic_info = User::create($data);
+            $user_basic_info->userUserHealths()->insert(['user_id'=>$user_id,'careby_id'=>$user_basic_info->id]);
             DB::commit();
             return response()->json([
                 'status' => true,

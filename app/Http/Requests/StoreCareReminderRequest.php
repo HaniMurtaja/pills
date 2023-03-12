@@ -7,7 +7,7 @@ use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 
-class StoreReminderRequest extends FormRequest
+class StoreCareReminderRequest extends FormRequest
 {
     public function authorize()
     {
@@ -17,6 +17,12 @@ class StoreReminderRequest extends FormRequest
     public function rules()
     {
         return [
+            'care_reminder_id' => [
+                'required',
+                'integer',
+                'exists:users,id',
+
+            ],
             'doses' => [
                 'required',
                 'integer',

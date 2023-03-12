@@ -23,7 +23,8 @@ class AuthController extends Controller
                 [
                     'name' => 'required',
                     'email' => 'required|email|unique:users,email',
-                    'password' => 'required'
+                    'password' => 'nullable',
+                    'google_id' => 'nullable'
                 ]);
 
             if($validateUser->fails()){
@@ -37,6 +38,7 @@ class AuthController extends Controller
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
+                'google_id' => $request->google_id,
                 'approved'           => 1,
                 'verified'           => 1,
                 'verified_at'        => date('Y-m-d h:i:s'),
@@ -63,36 +65,60 @@ class AuthController extends Controller
 
     public function login(Request $request)
 {
+
     try {
-        $validateUser = Validator::make($request->all(),
-            [
-                'email' => 'required|email',
-                'password' => 'required'
-            ]);
 
-        if($validateUser->fails()){
+        if (isset($request->google_id)){
+
+
+            $user = User::where('google_id', $request->google_id)->first();
+
+            if(!User::where('google_id',$request->google_id)->first()){
+                return response()->json([
+                    'status' => false,
+                    'message' => 'google_id does not match with our record.',
+                ], 401);
+            }
             return response()->json([
-                'status' => false,
-                'message' => 'validation error',
-                'errors' => $validateUser->errors()
-            ], 401);
+                'status' => true,
+                'message' => 'User Logged In Successfully',
+                'data' => new UserResource($user),
+                'token' => $user->createToken("API TOKEN")->plainTextToken
+            ], 200);
+
+        }else {
+
+            $validateUser = Validator::make($request->all(),
+                [
+                    'email' => 'required|email',
+                    'password' => 'required'
+                ]);
+
+            if($validateUser->fails()){
+                return response()->json([
+                    'status' => false,
+                    'message' => 'validation error',
+                    'errors' => $validateUser->errors()
+                ], 401);
+            }
+
+            if(!Auth::attempt($request->only(['email', 'password']))){
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Email & Password does not match with our record.',
+                ], 401);
+            }
+
+            $user = User::where('email', $request->email)->first();
+
+            return response()->json([
+                'status' => true,
+                'message' => 'User Logged In Successfully',
+                'data' => new UserResource($user),
+                'token' => $user->createToken("API TOKEN")->plainTextToken
+            ], 200);
         }
 
-        if(!Auth::attempt($request->only(['email', 'password']))){
-            return response()->json([
-                'status' => false,
-                'message' => 'Email & Password does not match with our record.',
-            ], 401);
-        }
-
-        $user = User::where('email', $request->email)->first();
-
-        return response()->json([
-            'status' => true,
-            'message' => 'User Logged In Successfully',
-            'data' => new UserResource($user),
-            'token' => $user->createToken("API TOKEN")->plainTextToken
-        ], 200);
 
     } catch (\Throwable $th) {
         return response()->json([

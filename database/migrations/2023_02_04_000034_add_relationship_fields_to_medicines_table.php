@@ -13,4 +13,10 @@ class AddRelationshipFieldsToMedicinesTable extends Migration
             $table->foreign('user_med_id', 'user_med_fk_7975209')->references('id')->on('users');
         });
     }
+
+    public function down()
+    {
+        Schema::dropIfExists('medicines');
+    }
+
 }

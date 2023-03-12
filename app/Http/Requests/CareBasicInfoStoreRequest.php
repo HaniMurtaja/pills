@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class  UserBasicInfoStoreRequest extends FormRequest
+class  CareBasicInfoStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,6 +27,7 @@ class  UserBasicInfoStoreRequest extends FormRequest
 
             'name'=>'required',
             'phone'=>'required',
+            'gender'=>'required',
             'date_of_brith'=>'required|date',
             'image'=>'nullable|image|max:1024',
         ];

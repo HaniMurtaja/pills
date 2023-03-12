@@ -47,10 +47,12 @@ class User extends Authenticatable implements HasMedia
 
     protected $fillable = [
         'user_id',
+        'google_id',
         'name',
         'email',
         'image',
-        'date_of_birth',
+        'date_of_brith',
+        'gender',
         'email_verified_at',
         'password',
         'approved',
@@ -116,19 +118,40 @@ class User extends Authenticatable implements HasMedia
         return $this->hasMany(Reminder::class, 'user_reminder_id', 'id');
     }
 
+    public function careReminderReminders()
+    {
+        return $this->hasMany(Reminder::class, 'care_reminder_id', 'id');
+    }
+
     public function userMedMedicines()
     {
         return $this->hasMany(Medicine::class, 'user_med_id', 'id');
     }
+    public function careMedMedicines()
+    {
+        return $this->hasMany(Medicine::class, 'care_medicine_id', 'id');
+    }
+
+
 
     public function userDocUserDocs()
     {
         return $this->hasMany(UserDoc::class, 'user_doc_id', 'id');
     }
 
+    public function careDocCareDocs()
+    {
+        return $this->hasMany(UserDoc::class, 'care_doc_id', 'id');
+    }
+
     public function userHistoryUserMedicalHistories()
     {
         return $this->hasMany(UserMedicalHistory::class, 'user_history_id', 'id');
+    }
+
+    public function careHistoryCareMedicalHistories()
+    {
+        return $this->hasMany(UserMedicalHistory::class, 'care_medical_history_id', 'id');
     }
 
     public function userSubsSubscriptions()
@@ -156,7 +179,19 @@ class User extends Authenticatable implements HasMedia
         $this->attributes['email_verified_at'] = $value ? Carbon::createFromFormat(config('panel.date_format') . ' ' . config('panel.time_format'), $value)->format('Y-m-d H:i:s') : null;
     }
 
- 
+    public function getImageAttribute($key)
+    {
+      $file = $this->getMedia('image')->last();
+        if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+            $file->preview   = $file->getUrl('preview');
+        }
+
+
+    }
+
+
 
     public function setPasswordAttribute($input)
     {

@@ -13,4 +13,9 @@ class AddRelationshipFieldsToUserDocsTable extends Migration
             $table->foreign('user_doc_id', 'user_doc_fk_7975221')->references('id')->on('users');
         });
     }
+
+    public function down()
+    {
+        Schema::dropIfExists('user_docs');
+    }
 }

@@ -13,4 +13,9 @@ class AddRelationshipFieldsToRemindersTable extends Migration
             $table->foreign('user_reminder_id', 'user_reminder_fk_7975208')->references('id')->on('users');
         });
     }
+
+    public function down()
+    {
+        Schema::dropIfExists('reminders');
+    }
 }

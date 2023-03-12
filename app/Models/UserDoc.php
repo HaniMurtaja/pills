@@ -70,6 +70,11 @@ class UserDoc extends Model implements HasMedia
         return $this->belongsTo(User::class, 'user_doc_id');
     }
 
+    public function care_doc()
+    {
+        return $this->belongsTo(User::class, 'care_doc_id');
+    }
+
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');

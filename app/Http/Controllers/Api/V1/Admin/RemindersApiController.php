@@ -22,6 +22,7 @@ class RemindersApiController extends Controller
 
     public function store(StoreReminderRequest $request)
     {
+
         $reminder = Reminder::create($request->all());
         $reminder->care_reminders()->sync($request->input('care_reminders', []));
 
@@ -29,6 +30,8 @@ class RemindersApiController extends Controller
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
     }
+
+
 
     public function show(Reminder $reminder)
     {
