@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('reminders', function (Blueprint $table) {
-            $table->string('applying')->nullable();
+            $table->string('applying');
         });
     }
 
