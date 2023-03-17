@@ -101,7 +101,19 @@ class RemindersController extends Controller
 
     public function store(StoreReminderRequest $request)
     {
-        $reminder = Reminder::create($request->all());
+        $data['doses'] = $request->doses;
+        $data['times'] = $request->times;
+        $data['applying'] =1;
+        $data['time'] = 1;
+        $data['duration'] = $request->duration;
+        $data['days_of_week'] = $request->days_of_week;
+        $data['start_from'] = $request->start_from;
+        $data['snooze'] = $request->snooze;
+        $data['date'] = $request->date;
+        $data['user_reminder_id'] = $request->user_reminder_id;
+        $data['care_reminders'] = $request->care_reminders;
+
+        $reminder = Reminder::create($data);
         $reminder->care_reminders()->sync($request->input('care_reminders', []));
 
         return redirect()->route('admin.reminders.index');
@@ -122,7 +134,18 @@ class RemindersController extends Controller
 
     public function update(UpdateReminderRequest $request, Reminder $reminder)
     {
-        $reminder->update($request->all());
+        $data['doses'] = $request->doses;
+        $data['times'] = $request->times;
+        $data['applying'] =1;
+        $data['time'] = 1;
+        $data['duration'] = $request->duration;
+        $data['days_of_week'] = $request->days_of_week;
+        $data['start_from'] = $request->start_from;
+        $data['snooze'] = $request->snooze;
+        $data['date'] = $request->date;
+        $data['user_reminder_id'] = $request->user_reminder_id;
+        $data['care_reminders'] = $request->care_reminders;
+        $reminder->update($data);
         $reminder->care_reminders()->sync($request->input('care_reminders', []));
 
         return redirect()->route('admin.reminders.index');
@@ -153,4 +176,5 @@ class RemindersController extends Controller
         return response(null, Response::HTTP_NO_CONTENT);
     }
 }
+
 
