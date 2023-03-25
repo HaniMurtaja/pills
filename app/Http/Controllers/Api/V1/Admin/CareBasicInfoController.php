@@ -24,7 +24,7 @@ class CareBasicInfoController extends Controller
             $data['name'] = $request->name;
             $data['phone'] = $request->phone;
             $data['gender'] = $request->gender;
-            $data['date_of_brith'] = $request->date_of_brith;
+            $data['date_of_birth'] = $request->date_of_birth;
             $user_id = request()->user()->id;
 
 

@@ -17,7 +17,7 @@ class UserInfoResource extends JsonResource
         $data= [
             'name'=>$this->name,
             'phone'=>$this->phone,
-            'date_of_brith'=>$this->date_of_brith,
+            'date_of_birth'=>$this->date_of_birth,
             'image'=>url($this->getRawOriginal('image')),
 
 

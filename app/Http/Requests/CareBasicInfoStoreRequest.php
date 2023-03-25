@@ -28,7 +28,7 @@ class  CareBasicInfoStoreRequest extends FormRequest
             'name'=>'required',
             'phone'=>'required',
             'gender'=>'required',
-            'date_of_brith'=>'required|date',
+            'date_of_birth'=>'required|date',
             'image'=>'nullable|image|max:1024',
         ];
     }
