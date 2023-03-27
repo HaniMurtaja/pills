@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use \DateTimeInterface;
+// use \DateTimeInterface;
 use App\Notifications\VerifyUserNotification;
 use Carbon\Carbon;
 use Hash;
@@ -225,8 +225,9 @@ class User extends Authenticatable implements HasMedia
         return $this->belongsToMany(UserHealth::class);
     }
 
-    protected function serializeDate(DateTimeInterface $date)
+  /*  protected function serializeDate(DateTimeInterface $date)
     {
-        return $date->format('YYYY-MM-DD HH:MM:SS');
+        return $date->format('Y-m-d H:i:s');
     }
+    */
 }
