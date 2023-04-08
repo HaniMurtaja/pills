@@ -8,6 +8,7 @@ use App\Http\Resources\Admin\UserInfoResource;
 use App\Models\User;
 use App\Models\UserBasicInfo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class UserBasicInfoController extends Controller
@@ -22,7 +23,7 @@ class UserBasicInfoController extends Controller
 
             $data['name'] = $request->name;
             $data['phone'] = $request->phone;
-            $data['date_of_birth'] = $request->date_of_birth;
+            $data['date_of_brith'] = $request->date_of_brith;
 
 
 
@@ -38,12 +39,13 @@ class UserBasicInfoController extends Controller
                 $path =  $file->move($location,$filename);
                 $data['image'] = $path;
             }
-            
-            $user_basic_info = User::create($data);
+            $user_id = Auth::user()->id ;
+            $user_basic_info = User::find($user_id);
+            $user_basic_info->update($data) ;
             DB::commit();
             return response()->json([
                 'status' => true,
-                'message' => 'Created Successfully',
+                'message' => 'Updated Successfully',
                 'data' => new UserInfoResource($user_basic_info),
             ], 200);
 
