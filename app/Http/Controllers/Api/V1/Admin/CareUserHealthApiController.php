@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCareHealthRequest;
 use App\Http\Requests\StoreUserHealthRequest;
+use App\Http\Requests\UpdateCareHealthRequest;
 use App\Http\Requests\UpdateUserHealthRequest;
 use App\Http\Resources\Admin\UserHealthResource;
 use App\Models\UserHealth;
@@ -29,6 +30,20 @@ class CareUserHealthApiController extends Controller
         return (new UserHealthResource($userHealth))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
+    }
+
+    public function update(UpdateCareHealthRequest $request,$id)
+    {
+        $request->validate([
+            'careby_id' => 'unique:user_healths,careby_id,'.$id
+        ]);
+            $userHealth = UserHealth::find($id);
+            if ($userHealth)
+                $userHealth->update($request->all());
+
+        return (new UserHealthResource($userHealth))
+            ->response()
+            ->setStatusCode(Response::HTTP_ACCEPTED);
     }
 
 }

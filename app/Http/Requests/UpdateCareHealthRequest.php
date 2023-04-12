@@ -6,24 +6,23 @@ use App\Models\UserHealth;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
-use Illuminate\Validation\Rule;
 
-class UpdateUserHealthRequest extends FormRequest
+class UpdateCareHealthRequest extends FormRequest
 {
     public function authorize()
     {
-        return Gate::allows('user_health_edit');
+        return Gate::allows('user_health_create');
     }
 
     public function rules()
     {
         return [
-            'careby' => [
+            'careby_id' => [
+                'required',
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
-                Rule::unique('user_healths')->ignore($this->user()->id, 'careby_id'),
-
+                'exists:users,id',
             ],
             'name' => [
                 'string',

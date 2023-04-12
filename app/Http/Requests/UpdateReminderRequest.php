@@ -23,6 +23,15 @@ class UpdateReminderRequest extends FormRequest
                 'min:-2147483648',
                 'max:2147483647',
             ],
+             'time' => [
+            'string',
+               'required',
+          ],
+            
+            'applying' => [
+                'string',
+              
+            ],
             'times' => [
                 'string',
                 

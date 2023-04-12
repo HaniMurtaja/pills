@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 class CareBasicInfoController extends Controller
 {
 
-    public function care_basic_info_store(CareBasicInfoStoreRequest $request)
+    public function care_basic_info_update(CareBasicInfoStoreRequest $request,$care_id)
     {
         try {
 
@@ -24,7 +24,7 @@ class CareBasicInfoController extends Controller
             $data['name'] = $request->name;
             $data['phone'] = $request->phone;
             $data['gender'] = $request->gender;
-            $data['date_of_birth'] = $request->date_of_birth;
+            $data['date_of_brith'] = $request->date_of_brith;
             $user_id = request()->user()->id;
 
 
@@ -40,12 +40,15 @@ class CareBasicInfoController extends Controller
                 $path =  $file->move($location,$filename);
                 $data['image'] = $path;
             }
-            $user_basic_info = User::create($data);
+
+            $user_basic_info = User::find($care_id);
+            $user_basic_info->update($data);
+            $user_basic_info->userUserHealths()->delete();
             $user_basic_info->userUserHealths()->insert(['user_id'=>$user_id,'careby_id'=>$user_basic_info->id]);
             DB::commit();
             return response()->json([
                 'status' => true,
-                'message' => 'Created Successfully',
+                'message' => 'Updated Successfully',
                 'data' => new UserInfoResource($user_basic_info),
             ], 200);
 

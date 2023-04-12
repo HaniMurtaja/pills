@@ -23,10 +23,15 @@ class StoreReminderRequest extends FormRequest
                 'min:-2147483648',
                 'max:2147483647',
             ],
-//            'time' => [
-//                'string',
-//                'required',
-//            ],
+            'time' => [
+                'string',
+               
+            ],
+        'applying' => [
+
+          'string',
+  
+        ],
             'times' => [
                 'string',
                 'required',

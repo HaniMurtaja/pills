@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCareMedicalHistoryRequest;
 use App\Http\Requests\StoreUserMedicalHistoryRequest;
+use App\Http\Requests\UpdateCareMedicalHistoryRequest;
 use App\Http\Requests\UpdateUserMedicalHistoryRequest;
 use App\Http\Resources\Admin\UserMedicalHistoryResource;
 use App\Models\UserMedicalHistory;
@@ -24,12 +25,25 @@ class CareMedicalHistoryController extends Controller
     public function store(StoreCareMedicalHistoryRequest $request)
     {
 
-        $userMedicalHistory = UserMedicalHistory::create($request->all());
-        $userMedicalHistory->care_histories()->sync($request->input('care_histories', []));
+        $careMedicalHistory = UserMedicalHistory::create($request->all());
+        $careMedicalHistory->care_histories()->sync($request->input('care_histories', []));
 
-        return (new UserMedicalHistoryResource($userMedicalHistory))
+        return (new UserMedicalHistoryResource($careMedicalHistory))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
+    }
+
+    public function update(UpdateCareMedicalHistoryRequest $request,$id)
+    {
+
+        $careMedicalHistory = UserMedicalHistory::find($id);
+        if ($careMedicalHistory)
+            $careMedicalHistory->update($request->all());
+            $careMedicalHistory->care_histories()->sync($request->input('care_histories', []));
+
+        return (new UserMedicalHistoryResource($careMedicalHistory))
+            ->response()
+            ->setStatusCode(Response::HTTP_ACCEPTED);
     }
 
 
