@@ -3,17 +3,17 @@
 namespace App\Http\Requests;
 
 use App\Models\UserHealth;
-use Gate;
+//use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 use Illuminate\Validation\Rule;
 
 class UpdateUserHealthRequest extends FormRequest
 {
-    public function authorize()
-    {
-        return Gate::allows('user_health_edit');
-    }
+  //  public function authorize()
+  //  {
+ //       return Gate::allows('user_health_edit');
+ //   }
 
     public function rules()
     {

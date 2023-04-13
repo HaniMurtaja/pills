@@ -3,16 +3,16 @@
 namespace App\Http\Requests;
 
 use App\Models\UserHealth;
-use Gate;
+//use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 
 class StoreUserHealthRequest extends FormRequest
 {
-    public function authorize()
-    {
-        return Gate::allows('user_health_create');
-    }
+  //  public function authorize()
+ //   {
+ //       return Gate::allows('user_health_create');
+ //   }
 
     public function rules()
     {

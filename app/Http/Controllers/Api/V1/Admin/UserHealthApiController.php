@@ -15,7 +15,7 @@ class UserHealthApiController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('user_health_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+       // abort_if(Gate::denies('user_health_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new UserHealthResource(UserHealth::with(['user'])->get());
     }
