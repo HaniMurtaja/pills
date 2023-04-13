@@ -43,8 +43,8 @@ class CareBasicInfoController extends Controller
 
             $user_basic_info = User::find($care_id);
             $user_basic_info->update($data);
-            $user_basic_info->userUserHealths()->delete();
-            $user_basic_info->userUserHealths()->insert(['user_id'=>$user_id,'careby_id'=>$user_basic_info->id]);
+
+            $user_basic_info->userUserHealths()->create(['name'=>$user_basic_info->name,'user_id'=>$user_id,'careby_id'=>$user_basic_info->id]);
             DB::commit();
             return response()->json([
                 'status' => true,
