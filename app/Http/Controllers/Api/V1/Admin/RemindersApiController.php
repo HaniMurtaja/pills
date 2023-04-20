@@ -31,8 +31,7 @@ class RemindersApiController extends Controller
         $data['start_from'] = $request->start_from;
         $data['snooze'] = $request->snooze;
         $data['date'] = $request->date;
-        $data['user_reminder_id'] = $request->user_reminder_id;
-        $data['care_reminders'] = $request->care_reminders;
+      
 
         $reminder = Reminder::create($data);
        
@@ -63,8 +62,7 @@ class RemindersApiController extends Controller
         $data['start_from'] = $request->start_from;
         $data['snooze'] = $request->snooze;
         $data['date'] = $request->date;
-        $data['user_reminder_id'] = $request->user_reminder_id;
-        $data['care_reminders'] = $request->care_reminders;
+       
         $reminder->update($data);
        
         $reminder->care_reminders()->sync($request->input('care_reminders', []));
