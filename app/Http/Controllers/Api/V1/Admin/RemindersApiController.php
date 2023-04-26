@@ -40,8 +40,12 @@ class RemindersApiController extends Controller
         return new ReminderResource($reminder->load(['user_reminder', 'care_reminders']));
     }
 
-    public function update(UpdateReminderRequest $request, Reminder $reminder)
+    public function update(UpdateReminderRequest $request, $id)
     {
+
+        $reminder = Reminder::find($id);
+        if (!$reminder)
+            return response()->json(['data'=>'Data Not Found'],404);
         $reminder->update($request->all());
         $reminder->care_reminders()->sync($request->input('care_reminders', []));
 
