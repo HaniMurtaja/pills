@@ -25,13 +25,8 @@ class StoreReminderRequest extends FormRequest
             ],
             'time' => [
                 'string',
-               
+                'required',
             ],
-        'applying' => [
-
-          'string',
-  
-        ],
             'times' => [
                 'string',
                 'required',

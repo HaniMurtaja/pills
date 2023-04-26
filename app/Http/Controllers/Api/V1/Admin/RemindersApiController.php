@@ -22,19 +22,8 @@ class RemindersApiController extends Controller
 
     public function store(StoreReminderRequest $request)
     {
-        $data['doses'] = $request->doses;
-        $data['times'] = $request->times;
-        $data['applying'] =1;
-        $data['time'] = 1;
-        $data['duration'] = $request->duration;
-        $data['days_of_week'] = $request->days_of_week;
-        $data['start_from'] = $request->start_from;
-        $data['snooze'] = $request->snooze;
-        $data['date'] = $request->date;
-      
 
-        $reminder = Reminder::create($data);
-       
+        $reminder = Reminder::create($request->all());
         $reminder->care_reminders()->sync($request->input('care_reminders', []));
 
         return (new ReminderResource($reminder))
@@ -53,18 +42,7 @@ class RemindersApiController extends Controller
 
     public function update(UpdateReminderRequest $request, Reminder $reminder)
     {
-        $data['doses'] = $request->doses;
-        $data['times'] = $request->times;
-        $data['applying'] =1;
-        $data['time'] = 1;
-        $data['duration'] = $request->duration;
-        $data['days_of_week'] = $request->days_of_week;
-        $data['start_from'] = $request->start_from;
-        $data['snooze'] = $request->snooze;
-        $data['date'] = $request->date;
-       
-        $reminder->update($data);
-       
+        $reminder->update($request->all());
         $reminder->care_reminders()->sync($request->input('care_reminders', []));
 
         return (new ReminderResource($reminder))
