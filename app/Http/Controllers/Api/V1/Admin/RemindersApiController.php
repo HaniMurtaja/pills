@@ -9,6 +9,7 @@ use App\Http\Resources\Admin\ReminderResource;
 use App\Models\Reminder;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class RemindersApiController extends Controller
@@ -20,10 +21,31 @@ class RemindersApiController extends Controller
         return new ReminderResource(Reminder::with(['user_reminder', 'care_reminders'])->get());
     }
 
+
+    public function getUserReminders()
+    {
+        abort_if(Gate::denies('reminder_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $user_id = Auth::user()->id;
+        $reminders = Reminder::where('user_reminder_id',$user_id)->with(['user_reminder', 'care_reminders'])->get();
+        return new ReminderResource($reminders);
+    }
+
     public function store(StoreReminderRequest $request)
     {
+        $user_id = Auth::user()->id;
 
-        $reminder = Reminder::create($request->all());
+        $data['doses']  =$request->doses;
+        $data['times']  =$request->times;
+        $data['duration']  =$request->duration;
+        $data['days_of_week']  =$request->days_of_week;
+        $data['start_from']  =$request->start_from;
+        $data['snooze']  =$request->snooze;
+        $data['date']  =$request->date;
+        $data['care_reminders']  =$request->care_reminders;
+        $data['time']  =$request->time;
+        $data['user_reminder_id']  =$user_id;
+        $reminder = Reminder::create($data);
         $reminder->care_reminders()->sync($request->input('care_reminders', []));
 
         return (new ReminderResource($reminder))

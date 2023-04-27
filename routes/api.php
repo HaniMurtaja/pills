@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Api\V1\Admin\FirebaseAuthController;
+use App\Http\Controllers\Api\V1\Admin\RemindersApiController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'v1', 'namespace' => 'Api\V1\Admin'], function () {
@@ -26,6 +27,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api\V1\Admin'], function () {
 
     // Reminders
     Route::apiResource('reminders', 'RemindersApiController'); //done
+        Route::get('user_reminders',[RemindersApiController::class,'getUserReminders']);
 
 
     // User Health
