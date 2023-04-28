@@ -27,8 +27,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api\V1\Admin'], function () {
 
     // Reminders
     Route::apiResource('reminders', 'RemindersApiController'); //done
-        Route::get('user_reminders',[RemindersApiController::class,'getUserReminders']);
-
+        Route::get('user_reminders', 'RemindersApiController@getUserReminders');
 
     // User Health
     Route::apiResource('user-healths', 'UserHealthApiController'); //done
