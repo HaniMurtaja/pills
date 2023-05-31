@@ -15,6 +15,7 @@ class UserInfoResource extends JsonResource
     public function toArray($request)
     {
         $data= [
+            'id'=>$this->id,
             'name'=>$this->name,
             'phone'=>$this->phone,
             'date_of_birth'=>$this->date_of_birth,
