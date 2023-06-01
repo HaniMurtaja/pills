@@ -47,6 +47,8 @@ class CareBasicInfoController extends Controller
             $data['date_of_brith'] = $request->date_of_brith;
             $user_id = request()->user()->id;
 
+
+
             if($request->file('image')){
                 $file = $request->file('image');
                 $filename = time().'_'.$file->getClientOriginalName();
@@ -78,7 +80,6 @@ class CareBasicInfoController extends Controller
             ], 500);
         }
     }
-    
     public function care_basic_info_update(CareBasicInfoStoreRequest $request,$care_id)
     {
         try {
@@ -91,6 +92,8 @@ class CareBasicInfoController extends Controller
             $data['gender'] = $request->gender;
             $data['date_of_brith'] = $request->date_of_brith;
             $user_id = request()->user()->id;
+
+
 
             if($request->file('image')){
                 $file = $request->file('image');

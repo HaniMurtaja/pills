@@ -53,6 +53,8 @@ class RemindersApiController extends Controller
             ->setStatusCode(Response::HTTP_CREATED);
     }
 
+
+
     public function show(Reminder $reminder)
     {
         abort_if(Gate::denies('reminder_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');

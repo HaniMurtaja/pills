@@ -37,7 +37,6 @@ class CareReminderController extends Controller
         $reminders = Reminder::whereDate('created_at', $search_date)->with(['care_reminders'])->get();
         return new ReminderResource($reminders);
     }
-    
     public function getCareReminders($id)
     {
         abort_if(Gate::denies('reminder_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -46,9 +45,10 @@ class CareReminderController extends Controller
         $reminders = Reminder::where('care_reminder_id',$care_reminder_id)->with(['care_reminders'])->get();
         return new ReminderResource($reminders);
     }
-
     public function store(StoreCareReminderRequest $request)
     {
+
+
         $reminder = Reminder::create($request->all());
         $reminder->care_reminders()->sync($request->input('care_reminders', []));
 
