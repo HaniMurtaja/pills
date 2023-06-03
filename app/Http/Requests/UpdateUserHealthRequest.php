@@ -29,9 +29,9 @@ class UpdateUserHealthRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'gender' => [
-                'required',
-            ],
+        //    'gender' => [
+          //      'required',
+          //  ],
             'dob' => [
                 'required',
                 'date_format:' . config('panel.date_format'),

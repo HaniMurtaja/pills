@@ -55,7 +55,7 @@ class UserHealth extends Model
 
     public function carebiesUsers()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class,'careby_id');
     }
 
     public function careMedMedicines()
