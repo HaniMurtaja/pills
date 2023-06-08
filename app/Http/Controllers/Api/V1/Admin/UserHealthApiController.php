@@ -9,15 +9,16 @@ use App\Http\Resources\Admin\UserHealthResource;
 use App\Models\UserHealth;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserHealthApiController extends Controller
 {
     public function index()
     {
-       // abort_if(Gate::denies('user_health_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        return new UserHealthResource(UserHealth::with(['user'])->get());
+        abort_if(Gate::denies('user_health_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $user_id = Auth::user()->id;
+        return new UserHealthResource(UserHealth::where('user_id',$user_id)->with(['user'])->get());
     }
 
     public function store(StoreUserHealthRequest $request)

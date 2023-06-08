@@ -27,7 +27,7 @@ class RemindersApiController extends Controller
         abort_if(Gate::denies('reminder_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $user_id = Auth::user()->id;
-        $reminders = Reminder::where('user_reminder_id',$user_id)->with(['user_reminder', 'care_reminders'])->get();
+        $reminders = Reminder::where('user_reminder_id',$user_id)->with(['user_reminder'])->get();
         return new ReminderResource($reminders);
     }
 
