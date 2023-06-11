@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 class UserBasicInfoController extends Controller
 {
 
-    public function user_basic_info_store(UserBasicInfoStoreRequest $request)
+    public function user_basic_info_update(UserBasicInfoStoreRequest $request, $id = null)
     {
         try {
 
@@ -26,23 +26,40 @@ class UserBasicInfoController extends Controller
             $data['date_of_birth'] = $request->date_of_birth;
 
 
-
-
-            if($request->file('image')){
+            if ($request->file('image')) {
                 $file = $request->file('image');
-                $filename = time().'_'.$file->getClientOriginalName();
+                $filename = time() . '_' . $file->getClientOriginalName();
 
                 // File upload location
                 $location = 'storage/users';
 
                 // Upload file
-                $path =  $file->move($location,$filename);
+                $path = $file->move($location, $filename);
                 $data['image'] = $path;
             }
-            $user_id = Auth::user()->id ;
-            $user_basic_info = User::find($user_id);
-            $user_basic_info->update($data) ;
-            DB::commit();
+            if ($id == null) {
+
+
+                $user_id = Auth::user()->id;
+                $user_basic_info = User::find($user_id);
+                if (!$user_basic_info)
+                    $user_basic_info->update($data);
+
+                $user_basic_info->update($data);
+
+            } else {
+
+                $user_basic_info = User::find($id);
+                if (!$user_basic_info)
+                    return response()->json([
+                        'status' => true,
+                        'message' => 'User Not Found',
+                        'data' =>[]
+                    ], 404);
+
+                $user_basic_info->update($data);
+            }
+
             return response()->json([
                 'status' => true,
                 'message' => 'Updated Successfully',

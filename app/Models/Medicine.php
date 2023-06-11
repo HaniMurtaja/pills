@@ -31,6 +31,7 @@ class Medicine extends Model
         'created_at',
         'updated_at',
         'deleted_at',
+        'reminder_id',
     ];
 
     public function getMedExpireDateAttribute($value)
@@ -61,5 +62,10 @@ class Medicine extends Model
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    public function reminder(){
+
+        return $this->belongsTo(Reminder::class);
     }
 }

@@ -16,7 +16,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api\V1\Admin'], function () {
         //logout
       Route::post('logout', 'AuthController@logout'); //done
         //user_basic_info
-        Route::post('user_basic_info_store', 'UserBasicInfoController@user_basic_info_store'); //done
+        Route::post('user_basic_info_update/{id?}', 'UserBasicInfoController@user_basic_info_update'); //done
 
         // Users
     Route::post('users/media', 'UsersApiController@storeMedia')->name('users.storeMedia');//done
