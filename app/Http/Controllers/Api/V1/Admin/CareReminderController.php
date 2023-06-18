@@ -22,11 +22,11 @@ class CareReminderController extends Controller
     }
 
 
-    public function get_all_care_reminder()
+    public function get_all_care_reminder($user_id)
     {
         abort_if(Gate::denies('reminder_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new ReminderResource(Reminder::with(['care_reminders'])->get());
+        return new ReminderResource(Reminder::where('user_reminder_id',$user_id)->with(['care_reminders'])->get());
     }
 
     public function searchCareReminders(Request $request){
