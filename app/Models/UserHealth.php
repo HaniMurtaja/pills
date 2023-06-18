@@ -29,6 +29,7 @@ class UserHealth extends Model
 
     protected $fillable = [
         'careby_id',
+        'user_id',
         'name',
         'gender',
         'dob',

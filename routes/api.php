@@ -71,7 +71,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api\V1\Admin'], function () {
         Route::post('care_basic_info_update/{id}', 'CareBasicInfoController@care_basic_info_update'); //done
 
         //care_reminder_store
-        Route::get('care_reminders', 'CareReminderController@get_all_care_reminder'); //done
+        Route::get('care_reminders/{user_id}', 'CareReminderController@get_all_care_reminder'); //done
 
         Route::post('care_reminder_store', 'CareReminderController@store'); //done
         Route::get('care_user_reminders/{id}','CareReminderController@getCareReminders')->name('care-reminder');
