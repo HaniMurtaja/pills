@@ -23,7 +23,7 @@ class UserBasicInfoController extends Controller
 
             $data['name'] = $request->name;
             $data['phone'] = $request->phone;
-            $data['date_of_birth'] = $request->date_of_birth;
+            $data['date_of_brith'] = $request->date_of_brith;
 
 
             if ($request->file('image')) {
