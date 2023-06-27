@@ -3,33 +3,33 @@
 namespace App\Http\Requests;
 
 use App\Models\UserHealth;
-//use Gate;
+use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 
 class StoreUserHealthRequest extends FormRequest
 {
-  //  public function authorize()
- //   {
- //       return Gate::allows('user_health_create');
- //   }
+    public function authorize()
+    {
+        return Gate::allows('user_health_create');
+    }
 
     public function rules()
     {
         return [
-     //       'careby_id' => [
-       //         'integer',
-         //       'min:-2147483648',
-           //     'max:2147483647',
-             //   'unique:user_healths,careby_id',
-           // ],
+            'careby_id' => [
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+                'unique:user_healths,careby_id',
+            ],
             'name' => [
                 'string',
                 'required',
             ],
-       //     'gender' => [
-         //       'required',
-       //     ],
+//            'gender' => [
+//                'required',
+//            ],
             'dob' => [
                 'required',
                 'date_format:' . config('panel.date_format'),

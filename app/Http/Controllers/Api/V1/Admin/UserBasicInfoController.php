@@ -23,7 +23,7 @@ class UserBasicInfoController extends Controller
 
             $data['name'] = $request->name;
             $data['phone'] = $request->phone;
-            $data['date_of_birth'] = $request->date_of_birth;
+            $data['date_of_brith'] = $request->date_of_brith;
 
 
             if ($request->file('image')) {
@@ -42,6 +42,7 @@ class UserBasicInfoController extends Controller
 
                 $user_id = Auth::user()->id;
                 $user_basic_info = User::find($user_id);
+
                 if (!$user_basic_info)
                     $user_basic_info->update($data);
 
@@ -50,6 +51,7 @@ class UserBasicInfoController extends Controller
             } else {
 
                 $user_basic_info = User::find($id);
+
                 if (!$user_basic_info)
                     return response()->json([
                         'status' => true,
@@ -59,6 +61,7 @@ class UserBasicInfoController extends Controller
 
                 $user_basic_info->update($data);
             }
+            DB::commit();
 
             return response()->json([
                 'status' => true,
