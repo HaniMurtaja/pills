@@ -46,7 +46,7 @@ class RemindersApiController extends Controller
         $data['time']  =$request->time;
         $data['user_reminder_id']  =$user_id;
         $reminder = Reminder::create($data);
-        $reminder->care_reminders()->sync($request->input('care_reminders', []));
+//        $reminder->care_reminders()->sync($request->input('care_reminders', []));
 
         return (new ReminderResource($reminder))
             ->response()

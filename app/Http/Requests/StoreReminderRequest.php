@@ -52,13 +52,13 @@ class StoreReminderRequest extends FormRequest
                 'date_format:' . config('panel.date_format'),
             ],
 
-            'care_reminders.*' => [
-                'integer',
-            ],
-            'care_reminders' => [
-                'required',
-                'array',
-            ],
+//            'care_reminders.*' => [
+//                'integer',
+//            ],
+//            'care_reminders' => [
+//                'required',
+//                'array',
+//            ],
         ];
     }
 }
